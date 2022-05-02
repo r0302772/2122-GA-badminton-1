@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\dev\2122-GA-badminton-1\Badminton_WPF\obj\Debug\
+C:\dev\Badminton2\2122-GA-badminton-1\Badminton_WPF\obj\Debug\
 Badminton_WPF
 none
 false
 DEBUG;TRACE
-C:\dev\2122-GA-badminton-1\Badminton_WPF\App.xaml
-11892971807
+C:\dev\Badminton2\2122-GA-badminton-1\Badminton_WPF\App.xaml
+1-375897891
 
-6628457063
-19-1030487442
-Views\MainWindow.xaml;
+7-1514531986
+201270683205
+Views\SpelerView.xaml;
 
-True
+False
 
