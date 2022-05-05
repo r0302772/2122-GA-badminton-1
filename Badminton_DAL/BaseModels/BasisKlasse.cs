@@ -7,13 +7,12 @@ using System.ComponentModel;
 
 namespace Badminton_DAL.BaseModels
 {
-    public abstract class BasisKlasse : INotifyPropertyChanged,IDataErrorInfo
+    public abstract class BasisKlasse : IDataErrorInfo, INotifyPropertyChanged
     {
         public abstract string this[string columnName] { get; }
 
-        
-
         public event PropertyChangedEventHandler PropertyChanged;
+
         public bool IsGeldig()
         {
             return string.IsNullOrWhiteSpace(Error);
@@ -22,7 +21,6 @@ namespace Badminton_DAL.BaseModels
 
         public string Error
         {
-
             get
             {
                 string foutmeldingen = "";
@@ -41,7 +39,5 @@ namespace Badminton_DAL.BaseModels
                 return foutmeldingen;
             }
         }
-
-
     }
 }

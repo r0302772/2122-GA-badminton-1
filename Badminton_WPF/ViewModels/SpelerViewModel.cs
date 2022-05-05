@@ -2,124 +2,238 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Badminton_DAL;
-
-
 
 namespace Badminton_WPF.ViewModels
 {
     public class SpelerViewModel : BasisViewModel
     {
-        public SpelerViewModel()
+        private Speler _spelerRecord;
+        public Speler SpelerRecord
         {
-            Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
-       
+            get { return _spelerRecord; }
+            set
+            {
+                _spelerRecord = value;
+                NotifyPropertyChanged();
+            }
         }
 
         private ObservableCollection<Speler> _spelers;
-
-        private Speler _speler;
-
-        public Speler Speler
-        {
-            get { return _speler; }
-            set { _speler = value; NotifyPropertyChanged(); }
-        }
-
         public ObservableCollection<Speler> Spelers
         {
             get { return _spelers; }
-            set { _spelers = value; NotifyPropertyChanged(); }
+            set
+            {
+                _spelers = value;
+                NotifyPropertyChanged();
+            }
         }
 
-        private int _id;
-        private string _voornaam;
-        private string _familienaam;
-        private string _telefoonnummer;
-        private string _email;
-        private DateTime _geboortedatum;
-        private string _geslacht;
-
-        public string Geslacht
+        private Speler _geselecteerdeSpeler;
+        public Speler GeselecteerdeSpeler
         {
-            get { return _geslacht; }
-            set { _geslacht = value; }
+            get { return _geselecteerdeSpeler; }
+            set
+            {
+                _geselecteerdeSpeler = value;
+                SpelerRecordInstellen();
+                NotifyPropertyChanged();
+
+            }
         }
 
+        //private string _txtVoornaam;
+        //public string txtVoornaam
+        //{
+        //    get { return _txtVoornaam; }
+        //    set
+        //    {
+        //        _txtVoornaam = value;
+        //        NotifyPropertyChanged();
+        //    }
+        //}
 
-        public DateTime Geboortedatum
+        private string _txtFamilienaam;
+
+        public string txtFamilienaam
         {
-            get { return _geboortedatum; }
-            set { _geboortedatum = value; }
-        }
-
-        public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
-
-        public string Telefoonnummer
-        {
-            get { return _telefoonnummer; }
-            set { _telefoonnummer = value; }
-        }
-
-
-        public string Familienaam
-        {
-            get { return _familienaam; }
-            set { _familienaam = value; }
-        }
-
-
-        public string Voornaam
-        {
-            get { return _voornaam; }
-            set { _voornaam = value; }
-        }
-
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
+            get { return _txtFamilienaam; }
+            set
+            {
+                _txtFamilienaam = value;
+                NotifyPropertyChanged();
+            }
         }
 
 
-      
-        private void SpelerToevoegen()
+        public SpelerViewModel()
         {
-            
-
-
-            Speler speler = new Speler();
-            Voornaam = speler.Voornaam;
-            Familienaam = speler.Familienaam;
-            Geboortedatum = speler.Geboortedatum;
-            Email = speler.Email;
-            Telefoonnummer = speler.Telefoonnummer;
-
-
-         DatabaseOperations.SpelerToevoegen(speler);
-          
-               List<Speler> spelers = DatabaseOperations.GetSpelers();
-                Spelers = new ObservableCollection<Speler>(spelers);
-            
+            Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+            SpelerRecord = new Speler();
         }
 
-        public void SpelerZoeken()
+        public override string this[string columnName]
         {
-            List<Speler> spelers = DatabaseOperations.GetSpelers();
+            get
+            {
+                return "";
+            }
+        }
+
+        #region overbodige properties? staan in comment
+        //private int _id;
+        //private string _voornaam;
+        //private string _familienaam;
+        //private string _telefoonnummer;
+        //private string _email;
+        //private DateTime _geboortedatum;
+        //private string _geslacht;
+
+        //public string Geslacht
+        //{
+        //    get { return _geslacht; }
+        //    set { _geslacht = value; }
+        //}
+
+        //public DateTime Geboortedatum
+        //{
+        //    get { return _geboortedatum; }
+        //    set { _geboortedatum = value; }
+        //}
+
+        //public string Email
+        //{
+        //    get { return _email; }
+        //    set { _email = value; }
+        //}
+
+        //public string Telefoonnummer
+        //{
+        //    get { return _telefoonnummer; }
+        //    set { _telefoonnummer = value; }
+        //}
+
+        //public string Familienaam
+        //{
+        //    get { return _familienaam; }
+        //    set { _familienaam = value; }
+        //}
+
+        //public string Voornaam
+        //{
+        //    get { return _voornaam; }
+        //    set { _voornaam = value; }
+        //}
+
+        //public int Id
+        //{
+        //    get { return _id; }
+        //    set { _id = value; }
+        //}
+
+        #endregion
+
+        public void Zoeken()
+        {
+            List<Speler> spelers = DatabaseOperations.GetSpelersByNaam(txtFamilienaam);
             Spelers = new ObservableCollection<Speler>(spelers);
         }
-        public override bool CanExecute(object parameter)
+
+        private void Toevoegen()
+        {
+            //if (GeselecteerdeUitgever != null)
+            //{
+            //WerknemerRecord.pub_id = GeselecteerdeUitgever.pub_id;
+            //WerknemerRecord.hire_date = DateTime.Now;
+
+            //if (SpelerRecord.IsGeldig())
+            //{
+            int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
+            if (ok > 0)
+            {
+                Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+                Wissen();
+            }
+            else
+            {
+                Foutmelding = "Speler is niet toegevoegd!";
+            }
+            //}
+            //}
+        }
+
+        public void Aanpassen()
+        {
+            if (GeselecteerdeSpeler != null)
+            {
+                //if (GeselecteerdeSpeler.IsGeldig())
+                //{
+                int ok = DatabaseOperations.SpelerAanpassen(GeselecteerdeSpeler);
+                if (ok > 0)
+                {
+                    Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelersByNaam(GeselecteerdeSpeler.Familienaam));
+                    Wissen();
+                }
+                else
+                {
+                    Foutmelding = "Speler is niet aangepast!";
+                }
+                //}
+            }
+            else
+            {
+                Foutmelding = "Eerst een speler selecteren!";
+            }
+        }
+
+        public void Verwijderen()
         {
 
-            //returnwaarde true -> methode mag uitgevoerd worden
+            if (GeselecteerdeSpeler != null)
+            {
+                int ok = DatabaseOperations.SpelerVerwijderen(GeselecteerdeSpeler);
+                if (ok > 0)
+                {
+                    Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+                    Wissen();
+                }
+                else
+                {
+                    Foutmelding = "Speler is niet verwijderd!";
+                }
+            }
+            else
+            {
+                Foutmelding = "Eerst een speler selecteren!";
+            }
+
+        }
+
+        private void SpelerRecordInstellen()
+        {
+            if (GeselecteerdeSpeler != null)
+            {
+                SpelerRecord = GeselecteerdeSpeler;
+            }
+            else
+            {
+                SpelerRecord = new Speler();
+            }
+        }
+
+        public void Wissen()
+        {
+            GeselecteerdeSpeler = null;
+            SpelerRecordInstellen();
+            Foutmelding = "";
+        }
+
+        public override bool CanExecute(object parameter)
+        {
+            //returnwaarde true->methode mag uitgevoerd worden
             //returnwaarde false -> methode mag niet uitgevoerd worden
             switch (parameter.ToString())
             {
@@ -127,26 +241,33 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": return true;
                 case "Toevoegen": return true;
                 case "Aanpassen": return true;
-
             }
             return true;
         }
+
         public override void Execute(object parameter)
         {
 
             switch (parameter.ToString())
             {
-                case "Toevoegen": SpelerToevoegen(); break;
-               // case "Verwijderen": SpelerVerwijderen(); break;
-               // case "Aanpassen": SpelerAandpassen() break;
-                case "Zoeken": SpelerZoeken(); break;
+                case "Toevoegen": Toevoegen(); break;
+                case "Verwijderen": Verwijderen(); break;
+                case "Aanpassen": Aanpassen(); break;
+                case "Zoeken": Zoeken(); break;
             }
         }
 
+        private string _foutmelding;
+        public string Foutmelding
+        {
+            get { return _foutmelding; }
+            set
+            {
+                _foutmelding = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
-
-    
-    
 }
 
 

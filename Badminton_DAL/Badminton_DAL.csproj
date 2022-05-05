@@ -64,6 +64,7 @@
     <Compile Include="BadmintonEntities.cs" />
     <Compile Include="BaseModels\BasisKlasse.cs" />
     <Compile Include="DatabaseOperations.cs" />
+    <Compile Include="FileOperations.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.designer.cs">
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
