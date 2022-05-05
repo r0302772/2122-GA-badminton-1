@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="BadmintonEntities.cs" />
     <Compile Include="BaseModels\BasisKlasse.cs" />
+    <Compile Include="Club.cs" />
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="FileOperations.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.cs" />
@@ -70,6 +71,7 @@
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Partials\Speler.cs" />
     <Compile Include="Speler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

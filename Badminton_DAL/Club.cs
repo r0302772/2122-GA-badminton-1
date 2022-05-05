@@ -1,33 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Badminton_DAL
 {
-    [Table("Spelers")]
-    public partial class Speler
+    [Table("Clubs")]
+    public partial class Club
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(50)]
-        public string Voornaam { get; set; }
+        public string Clubnaam { get; set; }
 
         [Required]
         [MaxLength(50)]
-        public string Familienaam { get; set; }
+        public string Adres { get; set; }
 
         [Required]
-        [MaxLength(1)]
-        public string Geslacht { get; set; }
+        [MaxLength(50)]
+        public string Gemeente { get; set; }
 
         [Required]
-        public DateTime Geboortedatum { get; set; }
+        public DateTime DatumOpgericht { get; set; }
 
         [Required]
         [MaxLength(50)]
@@ -36,5 +36,6 @@ namespace Badminton_DAL
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
+
     }
 }

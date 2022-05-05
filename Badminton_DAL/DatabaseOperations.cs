@@ -10,6 +10,7 @@ namespace Badminton_DAL
 {
     public class DatabaseOperations
     {
+        #region Speler
         public static List<Speler> GetSpelers()
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
@@ -27,7 +28,7 @@ namespace Badminton_DAL
             }
         }
 
-        //Werkt nog niet
+        //Werkt
         public static int SpelerToevoegen(Speler speler)
         {
             try
@@ -45,7 +46,7 @@ namespace Badminton_DAL
             }
         }
 
-        //Werkt nog niet
+        //Werkt
         public static int SpelerAanpassen(Speler speler)
         {
             try
@@ -84,5 +85,85 @@ namespace Badminton_DAL
                 return 0;
             }
         }
+        #endregion
+
+        #region Club
+        //testen
+        public static List<Club> GetClubs()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Clubs.ToList();
+            }
+        }
+
+        //testen
+        public static List<Club> GetClubsByNaam(string naam)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Clubs
+                    .Where(x => (x.Clubnaam == naam)).ToList();
+            }
+        }
+
+        //testen
+        public static int ClubToevoegen(Club club)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+                    badmintonEntities.Clubs.Add(club);
+                    return badmintonEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        //testen
+        public static int ClubAanpassen(Club club)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(club).State = EntityState.Modified;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        //testen
+        public static int ClubVerwijderen(Club club)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(club).State = EntityState.Deleted;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+        #endregion
     }
 }

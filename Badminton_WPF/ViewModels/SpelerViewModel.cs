@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Badminton_DAL;
+using System.Windows.Controls;
 
 namespace Badminton_WPF.ViewModels
 {
@@ -41,7 +42,6 @@ namespace Badminton_WPF.ViewModels
                 _geselecteerdeSpeler = value;
                 SpelerRecordInstellen();
                 NotifyPropertyChanged();
-
             }
         }
 
@@ -57,7 +57,6 @@ namespace Badminton_WPF.ViewModels
         //}
 
         private string _txtFamilienaam;
-
         public string txtFamilienaam
         {
             get { return _txtFamilienaam; }
@@ -68,6 +67,16 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
+        private ComboBoxItem _geselecteerdeGeslacht;
+        public ComboBoxItem GeselecteerdeGeslacht
+        {
+            get { return _geselecteerdeGeslacht; }
+            set
+            {
+                _geselecteerdeGeslacht = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public SpelerViewModel()
         {
@@ -149,19 +158,19 @@ namespace Badminton_WPF.ViewModels
             //WerknemerRecord.pub_id = GeselecteerdeUitgever.pub_id;
             //WerknemerRecord.hire_date = DateTime.Now;
 
-            //if (SpelerRecord.IsGeldig())
-            //{
-            int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
-            if (ok > 0)
+            if (SpelerRecord.IsGeldig())
             {
-                Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
-                Wissen();
+                int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
+                if (ok > 0)
+                {
+                    Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+                    Wissen();
+                }
+                else
+                {
+                    Foutmelding = "Speler is niet toegevoegd!";
+                }
             }
-            else
-            {
-                Foutmelding = "Speler is niet toegevoegd!";
-            }
-            //}
             //}
         }
 
@@ -172,15 +181,15 @@ namespace Badminton_WPF.ViewModels
                 if (GeselecteerdeSpeler.IsGeldig())
                 {
                     int ok = DatabaseOperations.SpelerAanpassen(GeselecteerdeSpeler);
-                if (ok > 0)
-                {
-                    Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelersByNaam(GeselecteerdeSpeler.Familienaam));
-                    Wissen();
-                }
-                else
-                {
-                    Foutmelding = "Speler is niet aangepast!";
-                }
+                    if (ok > 0)
+                    {
+                        Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelersByNaam(GeselecteerdeSpeler.Familienaam));
+                        Wissen();
+                    }
+                    else
+                    {
+                        Foutmelding = "Speler is niet aangepast!";
+                    }
                 }
             }
             else
