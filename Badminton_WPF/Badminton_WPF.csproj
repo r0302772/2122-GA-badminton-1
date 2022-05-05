@@ -75,6 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\ClubViewModel.cs" />
+    <Compile Include="Views\ClubView.xaml.cs">
+      <DependentUpon>ClubView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SpelerView.xaml.cs">
       <DependentUpon>SpelerView.xaml</DependentUpon>
     </Compile>
@@ -84,6 +88,10 @@
     </Compile>
     <Compile Include="ViewModels\BasisViewModel.cs" />
     <Compile Include="ViewModels\SpelerViewModel.cs" />
+    <Page Include="Views\ClubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SpelerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

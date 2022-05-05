@@ -7,7 +7,7 @@ using Badminton_DAL.BaseModels;
 
 namespace Badminton_DAL
 {
-   public partial class Speler:BasisKlasse
+    public partial class Speler : BasisKlasse
     {
         public override string this[string columnName]
         {

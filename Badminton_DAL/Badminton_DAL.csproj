@@ -71,9 +71,12 @@
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Partials\Club.cs" />
     <Compile Include="Partials\Speler.cs" />
+    <Compile Include="Partials\Werknemer.cs" />
     <Compile Include="Speler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Werknemer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

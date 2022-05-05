@@ -5,8 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Badminton_WPF.Views"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="ClubView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="txtClubnaam" Text="{Binding txtClubnaam, ValidatesOnDataErrors=True}"
+                   materialDesign:HintAssist.Hint="Clubnaam"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+        <!--<TextBox x:Name="txtVoornaam" Text="{Binding txtVoornaam, ValidatesOnDataErrors=True}"
+                   materialDesign:HintAssist.Hint="Voornaam"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
+
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken"/>
+
+        <DataGrid ItemsSource="{Binding Clubs}"
+                  SelectedItem="{Binding GeselecteerdeClub}"
+                  AutoGenerateColumns="False" IsReadOnly="true"
+                  Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Clubnaam}" Header="Clubnaam"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox 
+            Text="{Binding ClubRecord.Clubnaam}" 
+            materialDesign:HintAssist.Hint="Clubnaam" 
+            Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
+
+        <TextBox 
+            Text="{Binding ClubRecord.Adres}" 
+            materialDesign:HintAssist.Hint="Adres"
+            Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
+
+        <TextBox 
+            Text="{Binding ClubRecord.Gemeente}" 
+            materialDesign:HintAssist.Hint="Gemeente"
+            Width="150" Grid.Row="2" Grid.Column="2" Margin="5"/>
+
+        <TextBox 
+            Text="{Binding ClubRecord.DatumOpgericht}"
+            materialDesign:HintAssist.Hint="Datum opgericht"
+            Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
+        <TextBox 
+            Text="{Binding ClubRecord.Telefoonnummer}"
+            materialDesign:HintAssist.Hint="Telefoonnummer"
+            Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
+        <TextBox 
+            Text="{Binding ClubRecord.Email}"
+            materialDesign:HintAssist.Hint="Email"
+            Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
+
+        <Button Command="{Binding}" CommandParameter="Toevoegen"
+                Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0"/>
+        <Button Command="{Binding}" CommandParameter="Aanpassen"
+                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding}" CommandParameter="Verwijderen"
+                Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
     </Grid>
 </Window>
