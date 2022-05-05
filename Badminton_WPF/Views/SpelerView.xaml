@@ -34,7 +34,7 @@
         <TextBox x:Name="txtNaam" Text="{Binding txtFamilieNaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Naam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="0"  Margin="5" />
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
         <!--<TextBox x:Name="txtVoornaam" Text="{Binding txtVoornaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Voornaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"

@@ -27,6 +27,7 @@ namespace Badminton_DAL
             }
         }
 
+        //Werkt nog niet
         public static int SpelerToevoegen(Speler speler)
         {
             try
@@ -44,6 +45,7 @@ namespace Badminton_DAL
             }
         }
 
+        //Werkt nog niet
         public static int SpelerAanpassen(Speler speler)
         {
             try
@@ -63,6 +65,7 @@ namespace Badminton_DAL
             }
         }
 
+        //Werkt
         public static int SpelerVerwijderen(Speler speler)
         {
             try

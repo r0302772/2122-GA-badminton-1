@@ -169,9 +169,9 @@ namespace Badminton_WPF.ViewModels
         {
             if (GeselecteerdeSpeler != null)
             {
-                //if (GeselecteerdeSpeler.IsGeldig())
-                //{
-                int ok = DatabaseOperations.SpelerAanpassen(GeselecteerdeSpeler);
+                if (GeselecteerdeSpeler.IsGeldig())
+                {
+                    int ok = DatabaseOperations.SpelerAanpassen(GeselecteerdeSpeler);
                 if (ok > 0)
                 {
                     Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelersByNaam(GeselecteerdeSpeler.Familienaam));
@@ -181,7 +181,7 @@ namespace Badminton_WPF.ViewModels
                 {
                     Foutmelding = "Speler is niet aangepast!";
                 }
-                //}
+                }
             }
             else
             {
