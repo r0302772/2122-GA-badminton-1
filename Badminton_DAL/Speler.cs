@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Badminton_DAL
 {
     [Table("Spelers")]
     public class Speler
     {
         [Key]
-      
         public int Id { get; set; }
 
         [Required]
@@ -27,7 +27,6 @@ namespace Badminton_DAL
         public string Geslacht { get; set; }
 
         [Required]
-       
         public DateTime Geboortedatum { get; set; }
 
         [Required]

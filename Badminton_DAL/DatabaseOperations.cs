@@ -12,7 +12,7 @@ namespace Badminton_DAL
     {
         public static List<Speler> GetSpelers()
         {
-            using(BadmintonEntities badmintonEntities = new BadmintonEntities())
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Spelers.ToList();
             }
@@ -23,21 +23,63 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Spelers
-                    .Where(x=>(x.Voornaam==naam)||(x.Familienaam==naam)).ToList();
+                    .Where(x => (x.Voornaam == naam) || (x.Familienaam == naam)).ToList();
             }
         }
 
         public static int SpelerToevoegen(Speler speler)
         {
-            
+            try
+            {
                 using (BadmintonEntities badmintonEntities = new BadmintonEntities())
                 {
                     badmintonEntities.Spelers.Add(speler);
                     return badmintonEntities.SaveChanges();
                 }
-            
-          
-           
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        public static int SpelerAanpassen(Speler speler)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(speler).State = EntityState.Modified;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        public static int SpelerVerwijderen(Speler speler)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(speler).State = EntityState.Deleted;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
         }
     }
 }

@@ -9,8 +9,22 @@ using System.Windows.Input;
 
 namespace Badminton_WPF.ViewModels
 {
-    public abstract class  BasisViewModel: INotifyPropertyChanged,ICommand
+    public abstract class BasisViewModel : IDataErrorInfo, INotifyPropertyChanged, ICommand
     {
+
+        #region ICommand
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+        public abstract bool CanExecute(object parameter);
+
+        public abstract void Execute(object parameter);
+
+        #endregion
+
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Deze methode wordt opgeroepen in de setter van elke property.  
@@ -24,15 +38,33 @@ namespace Badminton_WPF.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
 
-    
-        public event EventHandler CanExecuteChanged
+        #region IDataErrorInfo
+        public abstract string this[string columnName] { get; }
+        public string Error
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            get
+            {
+                string foutmeldingen = "";
+                foreach (var item in this.GetType().GetProperties()) //reflection 
+                {
+                    string fout = this[item.Name];
+                    if (!string.IsNullOrWhiteSpace(fout))
+                    {
+                        foutmeldingen += fout + Environment.NewLine;
+                    }
+                }
+                return foutmeldingen;
+            }
         }
-        public abstract bool CanExecute(object parameter);
+        #endregion
 
-        public abstract void Execute(object parameter);
+        #region hulpmethodes
+        public bool IsGeldig()
+        {
+            return string.IsNullOrWhiteSpace(Error);
+        }
+        #endregion
     }
 }

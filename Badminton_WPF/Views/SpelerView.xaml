@@ -21,6 +21,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -30,25 +31,21 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-
-        <TextBox x:Name="txtNaam" Text="{Binding Familienaam, ValidatesOnDataErrors=True}"
+        <TextBox x:Name="txtNaam" Text="{Binding txtFamilieNaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Naam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="0"  Margin="5" 
-                 
-                 />
-        <TextBox x:Name="txtVoornaam" Text="{Binding Voornaam, ValidatesOnDataErrors=True}"
+                   Grid.Row="0" Grid.Column="0"  Margin="5" />
+        <!--<TextBox x:Name="txtVoornaam" Text="{Binding txtVoornaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Voornaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
 
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken"/>
 
-        <DataGrid ItemsSource="{Binding Spelers}" 
-                 
-                  Grid.Row="1" Grid.ColumnSpan="3"
-                  AutoGenerateColumns="False" IsReadOnly="true"  Margin="10" >
-
+        <DataGrid ItemsSource="{Binding Spelers}"
+                  SelectedItem="{Binding GeselecteerdeSpeler}"
+                  AutoGenerateColumns="False" IsReadOnly="true"
+                  Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
@@ -60,43 +57,45 @@
         </DataGrid>
 
         <TextBox 
-              Text="{Binding Familienaam}" materialDesign:HintAssist.Hint="Familienaam" Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
+            Text="{Binding SpelerRecord.Familienaam}" 
+            materialDesign:HintAssist.Hint="Familienaam" 
+            Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
 
         <TextBox 
-                Text="{Binding Voornaam}"  materialDesign:HintAssist.Hint="Voornaam" Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
+            Text="{Binding SpelerRecord.Voornaam}" 
+            materialDesign:HintAssist.Hint="Voornaam"
+            Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
-        <ComboBox  x:Name="cbGeslacht"
-                   
-                   SelectedItem="{Binding Geslacht}" 
-  materialDesign:HintAssist.Hint="Geslacht"
-  IsEditable="True"
-  materialDesign:HintAssist.HintOpacity=".26"
+        <ComboBox
+            SelectedValue="{Binding SpelerRecord.Geslacht, ValidatesOnDataErrors=True}"
+            DisplayMemberPath="Geslacht" SelectedValuePath="Geslacht"
+            materialDesign:HintAssist.Hint="Geslacht"
             Width="150" Grid.Row="2" Grid.Column="2" Margin="5">
-            <ComboBoxItem>
-                M
-            </ComboBoxItem>
-            <ComboBoxItem>
-                V
-            </ComboBoxItem>
-            <ComboBoxItem>
-                X
-            </ComboBoxItem>
+            <ComboBoxItem Content="M"></ComboBoxItem>
+            <ComboBoxItem Content="V"></ComboBoxItem>
+            <ComboBoxItem Content="X"></ComboBoxItem>
         </ComboBox>
 
         <TextBox 
-                 Text="{Binding Geboortedatum}" materialDesign:HintAssist.Hint="Geboortedatum" 
+            Text="{Binding SpelerRecord.Geboortedatum}"
+            materialDesign:HintAssist.Hint="Geboortedatum"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
         <TextBox 
-                 Text="{Binding Telefoonnummer}"  materialDesign:HintAssist.Hint="Telefoonnummer" 
+            Text="{Binding SpelerRecord.Telefoonnummer}"
+            materialDesign:HintAssist.Hint="Telefoonnummer"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
         <TextBox 
-               Text="{Binding Email}"  materialDesign:HintAssist.Hint="Email" 
+            Text="{Binding SpelerRecord.Email}"
+            materialDesign:HintAssist.Hint="Email"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
 
-        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen"  Margin="5" Grid.Row="4" Grid.Column="0"/>
-        <Button Command="{Binding}" CommandParameter="Aanpassen" Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
-        <Button Command="{Binding}" CommandParameter="Verwijderen" Content="Verwijderen"  Margin="5" Grid.Row="4" Grid.Column="3"/>
-
+        <Button Command="{Binding}" CommandParameter="Toevoegen"
+                Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0"/>
+        <Button Command="{Binding}" CommandParameter="Aanpassen"
+                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding}" CommandParameter="Verwijderen"
+                Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
     </Grid>
 </Window>
 
