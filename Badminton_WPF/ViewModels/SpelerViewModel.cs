@@ -45,24 +45,13 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
-        //private string _txtVoornaam;
-        //public string txtVoornaam
-        //{
-        //    get { return _txtVoornaam; }
-        //    set
-        //    {
-        //        _txtVoornaam = value;
-        //        NotifyPropertyChanged();
-        //    }
-        //}
-
-        private string _txtFamilienaam;
+        private string _txtVolledigenaam;
         public string txtFamilienaam
         {
-            get { return _txtFamilienaam; }
+            get { return _txtVolledigenaam; }
             set
             {
-                _txtFamilienaam = value;
+                _txtVolledigenaam = value;
                 NotifyPropertyChanged();
             }
         }
@@ -153,11 +142,6 @@ namespace Badminton_WPF.ViewModels
 
         private void Toevoegen()
         {
-            //if (GeselecteerdeUitgever != null)
-            //{
-            //WerknemerRecord.pub_id = GeselecteerdeUitgever.pub_id;
-            //WerknemerRecord.hire_date = DateTime.Now;
-
             if (SpelerRecord.IsGeldig())
             {
                 int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
@@ -171,7 +155,6 @@ namespace Badminton_WPF.ViewModels
                     Foutmelding = "Speler is niet toegevoegd!";
                 }
             }
-            //}
         }
 
         public void Aanpassen()

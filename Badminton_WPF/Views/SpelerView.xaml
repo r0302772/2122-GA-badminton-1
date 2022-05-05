@@ -31,7 +31,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="txtFamilienaam" Text="{Binding txtFamilienaam, ValidatesOnDataErrors=True}"
+        <TextBox x:Name="_txtVolledigenaam" Text="{Binding txtVolledigenaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Naam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
@@ -57,17 +57,17 @@
         </DataGrid>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Familienaam}" 
+            Text="{Binding SpelerRecord.Familienaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Familienaam" 
             Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Voornaam}" 
+            Text="{Binding SpelerRecord.Voornaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Voornaam"
             Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
         <ComboBox x:Name="cmbGeslacht"
-            SelectedValue="{Binding SpelerRecord.Geslacht, ValidatesOnDataErrors=True}"
+            SelectedValue="{Binding SpelerRecord.Geslacht, ValidatesOnDataErrors=False}"
             DisplayMemberPath="Geslacht" SelectedValuePath="Geslacht"
             materialDesign:HintAssist.Hint="Geslacht"
             Width="150" Grid.Row="2" Grid.Column="2" Margin="5">
@@ -77,15 +77,15 @@
         </ComboBox>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Geboortedatum}"
+            Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Geboortedatum"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
         <TextBox 
-            Text="{Binding SpelerRecord.Telefoonnummer}"
+            Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
         <TextBox 
-            Text="{Binding SpelerRecord.Email}"
+            Text="{Binding SpelerRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
 

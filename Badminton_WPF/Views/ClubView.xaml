@@ -34,10 +34,6 @@
                    materialDesign:HintAssist.Hint="Clubnaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
-        <!--<TextBox x:Name="txtVoornaam" Text="{Binding txtVoornaam, ValidatesOnDataErrors=True}"
-                   materialDesign:HintAssist.Hint="Voornaam"
-                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
 
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken"/>
 
@@ -51,30 +47,30 @@
         </DataGrid>
 
         <TextBox 
-            Text="{Binding ClubRecord.Clubnaam}" 
+            Text="{Binding ClubRecord.Clubnaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Clubnaam" 
             Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
 
         <TextBox 
-            Text="{Binding ClubRecord.Adres}" 
+            Text="{Binding ClubRecord.Adres, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Adres"
             Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
         <TextBox 
-            Text="{Binding ClubRecord.Gemeente}" 
+            Text="{Binding ClubRecord.Gemeente, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Gemeente"
             Width="150" Grid.Row="2" Grid.Column="2" Margin="5"/>
 
         <TextBox 
-            Text="{Binding ClubRecord.DatumOpgericht}"
+            Text="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Datum opgericht"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
         <TextBox 
-            Text="{Binding ClubRecord.Telefoonnummer}"
+            Text="{Binding ClubRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
         <TextBox 
-            Text="{Binding ClubRecord.Email}"
+            Text="{Binding ClubRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
 

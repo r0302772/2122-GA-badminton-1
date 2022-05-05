@@ -103,7 +103,7 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Clubs
-                    .Where(x => (x.Clubnaam == naam)).ToList();
+                    .Where(x => x.Clubnaam == naam).ToList();
             }
         }
 
