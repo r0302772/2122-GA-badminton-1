@@ -1,9 +1,9 @@
-﻿<Window x:Class="Badminton_WPF.Views.SpelerView"
+﻿<Window x:Class="Badminton_WPF.Views.ClubView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Badminton_WPF"
+        xmlns:local="clr-namespace:Badminton_WPF.Views"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -13,15 +13,14 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-
-        Title="MainWindow" Height="450" Width="800">
+        Title="ClubView" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -31,71 +30,56 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="_txtVolledigenaam" Text="{Binding txtVolledigenaam, ValidatesOnDataErrors=True}"
-                   materialDesign:HintAssist.Hint="Naam"
+        <TextBox x:Name="txtClubnaam" Text="{Binding txtClubnaam, ValidatesOnDataErrors=True}"
+                   materialDesign:HintAssist.Hint="Clubnaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
-        <!--<TextBox x:Name="txtVoornaam" Text="{Binding txtVoornaam, ValidatesOnDataErrors=True}"
-                   materialDesign:HintAssist.Hint="Voornaam"
-                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
 
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
 
-        <DataGrid ItemsSource="{Binding Spelers}"
-                  SelectedItem="{Binding GeselecteerdeSpeler}"
+        <DataGrid ItemsSource="{Binding Clubs}"
+                  SelectedItem="{Binding GeselecteerdeClub}"
                   AutoGenerateColumns="False" IsReadOnly="true"
                   Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
-                <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
-                <DataGridTextColumn Binding="{Binding Geslacht}" Header="Geslacht"/>
-                <DataGridTextColumn Binding="{Binding Geboortedatum}" Header="Geboortedatum"/>
-                <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn Binding="{Binding Clubnaam}" Header="Clubnaam"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Familienaam, ValidatesOnDataErrors=True}" 
-            materialDesign:HintAssist.Hint="Familienaam" 
+            Text="{Binding ClubRecord.Clubnaam, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Clubnaam" 
             Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Voornaam, ValidatesOnDataErrors=True}" 
-            materialDesign:HintAssist.Hint="Voornaam"
+            Text="{Binding ClubRecord.Adres, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Adres"
             Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
 
-        <ComboBox x:Name="cmbGeslacht"
-            SelectedValue="{Binding SpelerRecord.Geslacht, ValidatesOnDataErrors=False}"
-            DisplayMemberPath="Geslacht" SelectedValuePath="Geslacht"
-            materialDesign:HintAssist.Hint="Geslacht"
-            Width="150" Grid.Row="2" Grid.Column="2" Margin="5">
-            <ComboBoxItem>M</ComboBoxItem>
-            <ComboBoxItem>V</ComboBoxItem>
-            <ComboBoxItem>X</ComboBoxItem>
-        </ComboBox>
+        <TextBox 
+            Text="{Binding ClubRecord.Gemeente, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Gemeente"
+            Width="150" Grid.Row="2" Grid.Column="2" Margin="5"/>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True}"
-            materialDesign:HintAssist.Hint="Geboortedatum"
+            Text="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True}"
+            materialDesign:HintAssist.Hint="Datum opgericht"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
         <TextBox 
-            Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
+            Text="{Binding ClubRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
         <TextBox 
-            Text="{Binding SpelerRecord.Email, ValidatesOnDataErrors=True}"
+            Text="{Binding ClubRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
 
         <Button Command="{Binding}" CommandParameter="Toevoegen"
                 Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0" Background="#E73023"/>
-        <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
-                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
+        <Button Command="{Binding}" CommandParameter="Aanpassen"
+                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1" Background="#E73023"/>
         <Button Command="{Binding}" CommandParameter="Verwijderen"
                 Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3" Background="#E73023"/>
         <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
     </Grid>
 </Window>
-

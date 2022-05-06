@@ -17,10 +17,10 @@ namespace Badminton_WPF
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            SpelerView spelerView = new SpelerView();
-            SpelerViewModel spelerViewModel = new SpelerViewModel();
-            spelerView.DataContext = spelerViewModel;
-            spelerView.Show();
+            MainMenuViewModel viewmodel = new MainMenuViewModel();
+            Views.MainMenuWindow view = new Views.MainMenuWindow();
+            view.DataContext = viewmodel;
+            view.Show();
         }
     }
 }

@@ -14,5 +14,7 @@ namespace Badminton_DAL
         }
 
         public DbSet<Speler> Spelers { get; set; }
+        public DbSet<Club> Clubs { get; set; }
+        public DbSet<Werknemer> Personeel { get; set; }
     }
 }

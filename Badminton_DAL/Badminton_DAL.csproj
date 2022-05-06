@@ -63,15 +63,24 @@
   <ItemGroup>
     <Compile Include="BadmintonEntities.cs" />
     <Compile Include="BaseModels\BasisKlasse.cs" />
+    <Compile Include="Club.cs" />
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="FileOperations.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.designer.cs">
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205051837379_club_personeelMigration.cs" />
+    <Compile Include="Migrations\202205051837379_club_personeelMigration.designer.cs">
+      <DependentUpon>202205051837379_club_personeelMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Partials\Club.cs" />
+    <Compile Include="Partials\Speler.cs" />
+    <Compile Include="Partials\Werknemer.cs" />
     <Compile Include="Speler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Werknemer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -81,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202205021153070_InitialCreate.resx">
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205051837379_club_personeelMigration.resx">
+      <DependentUpon>202205051837379_club_personeelMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

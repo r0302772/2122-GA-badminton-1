@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Badminton_DAL
 {
-    [Table("Spelers")]
-    public partial class Speler
+    [Table("Personeel")]
+    public partial class Werknemer
     {
         [Key]
         public int Id { get; set; }
@@ -23,11 +23,12 @@ namespace Badminton_DAL
         public string Familienaam { get; set; }
 
         [Required]
-        [MaxLength(1)]
-        public string Geslacht { get; set; }
+        [MaxLength(50)]
+        public string Adres { get; set; }
 
         [Required]
-        public DateTime Geboortedatum { get; set; }
+        [MaxLength(50)]
+        public string Gemeente { get; set; }
 
         [Required]
         [MaxLength(50)]
