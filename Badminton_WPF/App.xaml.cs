@@ -18,7 +18,7 @@ namespace Badminton_WPF
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MainMenuViewModel viewmodel = new MainMenuViewModel();
-            Views.MainMenuWindow view = new Views.MainMenuWindow();
+            Views.MainMenuWindow view = new Views.MainMenuWindow() { Title ="Badminton Vlaanderen"};
             view.DataContext = viewmodel;
             view.Show();
         }
