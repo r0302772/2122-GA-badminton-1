@@ -10,6 +10,7 @@ namespace Badminton_WPF.ViewModels
 {
     public class MainMenuViewModel : ICommand
     {
+       public string titel = "Badminton Vlaanderen";
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
@@ -41,7 +42,7 @@ namespace Badminton_WPF.ViewModels
         public void OpenClubsView()
         {
             ClubViewModel vm = new ClubViewModel();
-            ClubView view = new ClubView();
+            ClubView view = new ClubView() {Title = $"{titel} | Clubs" };
             view.DataContext = vm;
             view.Show();
         }
@@ -54,7 +55,7 @@ namespace Badminton_WPF.ViewModels
         public void OpenSpelersView()
         {
             SpelerViewModel vm = new SpelerViewModel();
-            SpelerView view = new SpelerView();
+            SpelerView view = new SpelerView() { Title = $"{titel} | Spelers" };
             view.DataContext = vm;
             view.Show();
         }
