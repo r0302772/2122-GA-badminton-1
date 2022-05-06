@@ -35,7 +35,7 @@
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
 
-        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken"/>
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
 
         <DataGrid ItemsSource="{Binding Clubs}"
                   SelectedItem="{Binding GeselecteerdeClub}"
@@ -75,11 +75,11 @@
             Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
 
         <Button Command="{Binding}" CommandParameter="Toevoegen"
-                Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0"/>
+                Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0" Background="#E73023"/>
         <Button Command="{Binding}" CommandParameter="Aanpassen"
-                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
+                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1" Background="#E73023"/>
         <Button Command="{Binding}" CommandParameter="Verwijderen"
-                Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3"/>
+                Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3" Background="#E73023"/>
         <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
     </Grid>
 </Window>
