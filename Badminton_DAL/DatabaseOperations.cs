@@ -15,7 +15,7 @@ namespace Badminton_DAL
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
-                return badmintonEntities.Spelers.ToList();
+                return badmintonEntities.Spelers.Include(x => x.Geslacht).ToList();
             }
         }
 
@@ -162,6 +162,26 @@ namespace Badminton_DAL
             {
                 FileOperations.FoutLoggen(ex);
                 return 0;
+            }
+        }
+        #endregion
+
+        #region Geslacht
+
+        public static List<Geslacht> GetGeslachten()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Geslachten.ToList();
+            }
+        }
+
+        public static Geslacht GetGeslachtById(int id)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+               return  badmintonEntities.Geslachten.Include(x => x.Spelers).Where(g => g.Id == id).SingleOrDefault();
+                
             }
         }
         #endregion

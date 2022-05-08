@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Badminton_DAL
 {
@@ -22,10 +23,7 @@ namespace Badminton_DAL
         [MaxLength(50)]
         public string Familienaam { get; set; }
 
-        [Required]
-        [MaxLength(1)]
-        public string Geslacht { get; set; }
-
+        
         [Required]
         public DateTime Geboortedatum { get; set; }
 
@@ -36,5 +34,8 @@ namespace Badminton_DAL
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
+
+        public int GeslachtID { get; set; }
+        public Geslacht Geslacht { get; set; }
     }
 }

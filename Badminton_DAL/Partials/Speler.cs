@@ -21,10 +21,10 @@ namespace Badminton_DAL
                 {
                     return "Familienaam is een verplicht veld!";
                 }
-                if (columnName == /*nameof(Geslacht)*/ "Geslacht" && string.IsNullOrWhiteSpace(Geslacht))
-                {
-                    return "Geslacht is een verplicht veld!";
-                }
+                //if (columnName == /*nameof(Geslacht)*/ "Geslacht" && string.IsNullOrWhiteSpace(Geslacht))
+                //{
+                //    return "Geslacht is een verplicht veld!";
+                //}
                 if (columnName == /*nameof(Geboortedatum)*/ "Geboortedatum" && string.IsNullOrWhiteSpace(Geboortedatum.ToString()))
                 {
                     return "Geboortedatum is een verplicht veld!";

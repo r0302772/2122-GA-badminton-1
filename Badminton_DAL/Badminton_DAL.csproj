@@ -57,6 +57,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,7 @@
     <Compile Include="Club.cs" />
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="FileOperations.cs" />
+    <Compile Include="Geslacht.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.cs" />
     <Compile Include="Migrations\202205021153070_InitialCreate.designer.cs">
       <DependentUpon>202205021153070_InitialCreate.cs</DependentUpon>
@@ -78,8 +80,13 @@
     <Compile Include="Migrations\202205051837379_club_personeelMigration.designer.cs">
       <DependentUpon>202205051837379_club_personeelMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205081220003_Geslachten.cs" />
+    <Compile Include="Migrations\202205081220003_Geslachten.designer.cs">
+      <DependentUpon>202205081220003_Geslachten.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Partials\Club.cs" />
+    <Compile Include="Partials\Geslacht.cs" />
     <Compile Include="Partials\Speler.cs" />
     <Compile Include="Partials\Werknemer.cs" />
     <Compile Include="Speler.cs" />
@@ -96,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205051837379_club_personeelMigration.resx">
       <DependentUpon>202205051837379_club_personeelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205081220003_Geslachten.resx">
+      <DependentUpon>202205081220003_Geslachten.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
