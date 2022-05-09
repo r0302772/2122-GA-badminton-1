@@ -4,6 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Badminton_WPF"
+       
+        
+        
+       
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -14,15 +18,17 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
 
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
@@ -39,17 +45,27 @@
                    materialDesign:HintAssist.Hint="Voornaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
+        <ComboBox x:Name="cmbClub"
+              ItemsSource="{Binding Clubs}"   
+           SelectedValue="{Binding SpelerRecord.ClubID, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Naam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeClub}"
+            materialDesign:HintAssist.Hint="Club"
+             Grid.Row="1"  Grid.ColumnSpan="3" Margin="5">
 
+        </ComboBox>
+       
         <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
 
         <DataGrid ItemsSource="{Binding Spelers}"
                   SelectedItem="{Binding GeselecteerdeSpeler}"
                   AutoGenerateColumns="False" IsReadOnly="true"
-                  Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
+                  Grid.Row="2" Grid.ColumnSpan="3" Margin="10" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
-                <DataGridTextColumn Binding="{Binding Geslacht}" Header="Geslacht"/>
+                <DataGridTextColumn Binding="{Binding Geslacht.Naam}" Header="Geslacht"/>
                 <DataGridTextColumn Binding="{Binding Geboortedatum}" Header="Geboortedatum"/>
                 <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
@@ -59,43 +75,44 @@
         <TextBox 
             Text="{Binding SpelerRecord.Familienaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Familienaam" 
-            Width="150" Grid.Row="2" Grid.Column="0" Margin="5"/>
+            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"/>
 
         <TextBox 
             Text="{Binding SpelerRecord.Voornaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Voornaam"
-            Width="150" Grid.Row="2" Grid.Column="1" Margin="5"/>
+            Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"/>
 
         <ComboBox x:Name="cmbGeslacht"
-            SelectedValue="{Binding SpelerRecord.Geslacht, ValidatesOnDataErrors=False}"
-            DisplayMemberPath="Geslacht" SelectedValuePath="Geslacht"
+              ItemsSource="{Binding Geslachten}"   
+           SelectedValue="{Binding SpelerRecord.GeslachtID, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Naam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeGeslacht}"
             materialDesign:HintAssist.Hint="Geslacht"
-            Width="150" Grid.Row="2" Grid.Column="2" Margin="5">
-            <ComboBoxItem>M</ComboBoxItem>
-            <ComboBoxItem>V</ComboBoxItem>
-            <ComboBoxItem>X</ComboBoxItem>
+            Width="150" Grid.Row="3" Grid.Column="2" Margin="0,20">
+
         </ComboBox>
 
         <TextBox 
             Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Geboortedatum"
-            Width="150" Grid.Row="3" Grid.Column="0" Margin="5"/>
+            Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"/>
         <TextBox 
             Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"
-            Width="150" Grid.Row="3" Grid.Column="1" Margin="5"/>
+            Width="150" Grid.Row="4" Grid.Column="1" Margin="0,20"/>
         <TextBox 
             Text="{Binding SpelerRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
-            Width="150" Grid.Row="3" Grid.Column="2" Margin="5"/>
+            Width="150" Grid.Row="4" Grid.Column="2" Margin="0,20"/>
 
-        <Button Command="{Binding}" CommandParameter="Toevoegen"
-                Content="Toevoegen" Margin="5" Grid.Row="4" Grid.Column="0" Background="#E73023"/>
+        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" Margin="15" Grid.Row="5" Grid.Column="0" Background="#E73023"/>
+                
         <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
-                Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1"/>
+                Content="Aanpassen"  Margin="15" Grid.Row="5" Grid.Column="1"/>
         <Button Command="{Binding}" CommandParameter="Verwijderen"
-                Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3" Background="#E73023"/>
-        <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
+                Content="Verwijderen" Margin="15" Grid.Row="5" Grid.Column="3" Background="#E73023"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15"/>
     </Grid>
 </Window>
 

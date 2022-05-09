@@ -37,5 +37,6 @@ namespace Badminton_DAL
         [MaxLength(50)]
         public string Email { get; set; }
 
+        public ICollection<Speler> Spelers { get; set; }
     }
 }
