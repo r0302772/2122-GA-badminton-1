@@ -24,10 +24,18 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Spelers
-                    .Where(x => (x.Voornaam == naam) || (x.Familienaam == naam)).ToList();
+                    .Where(x => (x.Voornaam.Contains(naam)) || (x.Familienaam.Contains( naam))).ToList();
             }
         }
 
+        public static List<Speler> GetSpelerByClubId(int id)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Spelers
+                    .Where(x => x.Id == id).ToList();
+            }
+        }
         //Werkt
         public static int SpelerToevoegen(Speler speler)
         {
@@ -103,9 +111,11 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Clubs
-                    .Where(x => x.Clubnaam == naam).ToList();
+                    .Where(x => x.Clubnaam.Contains(naam)).ToList();
             }
         }
+
+       
 
         //testen
         public static int ClubToevoegen(Club club)
