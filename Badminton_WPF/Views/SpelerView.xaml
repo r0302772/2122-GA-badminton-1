@@ -47,28 +47,29 @@
                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" />-->
         <ComboBox x:Name="cmbClub"
               ItemsSource="{Binding Clubs}"   
-           SelectedValue="{Binding SpelerRecord.ClubID, ValidatesOnDataErrors=False}"
-                 DisplayMemberPath="Naam"
+           
+                 DisplayMemberPath="Clubnaam"
              SelectedValuePath="Id" 
                   SelectedItem="{Binding GeselecteerdeClub}"
             materialDesign:HintAssist.Hint="Club"
-             Grid.Row="1"  Grid.ColumnSpan="3" Margin="5">
+             Grid.Row="1"  Grid.ColumnSpan="3" Margin="0,9.4,9.6,0">
 
         </ComboBox>
        
-        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023" />
 
         <DataGrid ItemsSource="{Binding Spelers}"
-                  SelectedItem="{Binding GeselecteerdeSpeler}"
+                  SelectedItem="{Binding SpelerRecord}"
                   AutoGenerateColumns="False" IsReadOnly="true"
                   Grid.Row="2" Grid.ColumnSpan="3" Margin="10" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
-                <DataGridTextColumn Binding="{Binding Geslacht.Naam}" Header="Geslacht"/>
+                <DataGridTextColumn Binding="{Binding Geslacht.Naam}"  Header="Geslacht"/>
                 <DataGridTextColumn Binding="{Binding Geboortedatum}" Header="Geboortedatum"/>
                 <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn Binding="{Binding Club}" Header="Club"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -87,7 +88,7 @@
            SelectedValue="{Binding SpelerRecord.GeslachtID, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Naam"
              SelectedValuePath="Id" 
-                  SelectedItem="{Binding GeselecteerdeGeslacht}"
+                  SelectedItem="{Binding SpelerRecord.Geslacht}"
             materialDesign:HintAssist.Hint="Geslacht"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="0,20">
 
@@ -112,7 +113,7 @@
                 Content="Aanpassen"  Margin="15" Grid.Row="5" Grid.Column="1"/>
         <Button Command="{Binding}" CommandParameter="Verwijderen"
                 Content="Verwijderen" Margin="15" Grid.Row="5" Grid.Column="3" Background="#E73023"/>
-        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"/>
     </Grid>
 </Window>
 

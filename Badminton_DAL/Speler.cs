@@ -41,5 +41,8 @@ namespace Badminton_DAL
         public Club Club { get; set; }
 
         public int ClubID { get; set; }
+
+        public ICollection<CategorieSpeler> CategoriesSpelers { get; set; }
+       
     }
 }

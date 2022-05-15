@@ -68,21 +68,40 @@
   <ItemGroup>
     <Compile Include="BadmintonEntities.cs" />
     <Compile Include="BaseModels\BasisKlasse.cs" />
+    <Compile Include="Categorie.cs" />
+    <Compile Include="CategorieSpeler.cs" />
+    <Compile Include="CategorieSpelerRank.cs" />
+    <Compile Include="CategorieWedstrijd.cs" />
     <Compile Include="Club.cs" />
     <Compile Include="DatabaseOperations.cs" />
     <Compile Include="FileOperations.cs" />
+    <Compile Include="Functie.cs" />
     <Compile Include="Geslacht.cs" />
     <Compile Include="Migrations\202205081449201_initial.cs" />
     <Compile Include="Migrations\202205081449201_initial.designer.cs">
       <DependentUpon>202205081449201_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205151450390_NieweEntiteitenToegevoegd.cs" />
+    <Compile Include="Migrations\202205151450390_NieweEntiteitenToegevoegd.designer.cs">
+      <DependentUpon>202205151450390_NieweEntiteitenToegevoegd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205151453521_FKVoorWerkenemer-Club.cs" />
+    <Compile Include="Migrations\202205151453521_FKVoorWerkenemer-Club.designer.cs">
+      <DependentUpon>202205151453521_FKVoorWerkenemer-Club.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205151531566_Relaties.cs" />
+    <Compile Include="Migrations\202205151531566_Relaties.designer.cs">
+      <DependentUpon>202205151531566_Relaties.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Partials\Club.cs" />
     <Compile Include="Partials\Geslacht.cs" />
     <Compile Include="Partials\Speler.cs" />
     <Compile Include="Partials\Werknemer.cs" />
+    <Compile Include="Rank.cs" />
     <Compile Include="Speler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wedstrijd.cs" />
     <Compile Include="Werknemer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +111,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202205081449201_initial.resx">
       <DependentUpon>202205081449201_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205151450390_NieweEntiteitenToegevoegd.resx">
+      <DependentUpon>202205151450390_NieweEntiteitenToegevoegd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205151453521_FKVoorWerkenemer-Club.resx">
+      <DependentUpon>202205151453521_FKVoorWerkenemer-Club.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205151531566_Relaties.resx">
+      <DependentUpon>202205151531566_Relaties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

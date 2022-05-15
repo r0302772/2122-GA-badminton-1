@@ -37,5 +37,13 @@ namespace Badminton_DAL
         [Required]
         [MaxLength(50)]
         public string Email { get; set; }
+
+        public int ClubId { get; set; }
+
+        public int FunctieId { get; set; }
+
+        public Functie Functie { get; set; }
+        public Club Club { get; set; }
+
     }
 }

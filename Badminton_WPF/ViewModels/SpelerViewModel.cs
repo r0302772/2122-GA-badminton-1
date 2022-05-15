@@ -101,7 +101,7 @@ namespace Badminton_WPF.ViewModels
 
         public SpelerViewModel()
         {
-            //Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+            Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
             Geslachten = new ObservableCollection<Geslacht>(DatabaseOperations.GetGeslachten());
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             SpelerRecord = new Speler();
@@ -183,9 +183,9 @@ namespace Badminton_WPF.ViewModels
 
         private void Toevoegen()
         {
-            if (GeselecteerdeGeslacht.Id != null)
+            if (GeselecteerdeGeslacht != null && GeselecteerdeClub!= null)
             {
-
+                SpelerRecord.ClubID = GeselecteerdeClub.Id;
                 SpelerRecord.GeslachtID = GeselecteerdeGeslacht.Id;
 
                 if (SpelerRecord.IsGeldig())
@@ -208,14 +208,14 @@ namespace Badminton_WPF.ViewModels
 
         public void Aanpassen()
         {
-            if (GeselecteerdeSpeler != null)
+            if (SpelerRecord != null)
             {
-                if (GeselecteerdeSpeler.IsGeldig())
+                if (SpelerRecord.IsGeldig())
                 {
-                    int ok = DatabaseOperations.SpelerAanpassen(GeselecteerdeSpeler);
+                    int ok = DatabaseOperations.SpelerAanpassen(SpelerRecord);
                     if (ok > 0)
                     {
-                        Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelersByNaam(GeselecteerdeSpeler.Familienaam));
+                        Spelers = new ObservableCollection < Speler > (DatabaseOperations.GetSpelers());
                         Wissen();
                     }
                     else
@@ -233,9 +233,9 @@ namespace Badminton_WPF.ViewModels
         public void Verwijderen()
         {
 
-            if (GeselecteerdeSpeler != null)
+            if (SpelerRecord != null)
             {
-                int ok = DatabaseOperations.SpelerVerwijderen(GeselecteerdeSpeler);
+                int ok = DatabaseOperations.SpelerVerwijderen(SpelerRecord);
                 if (ok > 0)
                 {
                     Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
@@ -258,6 +258,7 @@ namespace Badminton_WPF.ViewModels
             if (GeselecteerdeSpeler != null)
             {
                 SpelerRecord = GeselecteerdeSpeler;
+                
                 //Geslacht = DatabaseOperations.GetGeslachtById(int.Parse(GeselecteerdeSpeler.GeslachtID));
                 //SpelerRecord.GeslachtID = GeselecteerdeGeslacht.Id;
             }
