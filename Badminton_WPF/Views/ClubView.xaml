@@ -80,6 +80,6 @@
                 Content="Aanpassen"  Margin="5" Grid.Row="4" Grid.Column="1" Background="#E73023"/>
         <Button Command="{Binding}" CommandParameter="Verwijderen"
                 Content="Verwijderen" Margin="5" Grid.Row="4" Grid.Column="3" Background="#E73023"/>
-        <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" Margin="5" Foreground="Red"/>
     </Grid>
 </Window>

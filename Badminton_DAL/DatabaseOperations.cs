@@ -11,6 +11,17 @@ namespace Badminton_DAL
     public class DatabaseOperations
     {
         #region Speler
+        public static Speler GetSpelerByPK(int pk)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Spelers
+                    .Include(x => x.Geslacht)
+                    .Include(x => x.Club)
+                    .Where(x => x.Id == pk).SingleOrDefault();
+            }
+        }
+
         public static List<Speler> GetSpelers()
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
