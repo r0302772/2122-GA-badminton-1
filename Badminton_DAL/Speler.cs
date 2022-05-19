@@ -25,6 +25,8 @@ namespace Badminton_DAL
 
         
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
         public DateTime Geboortedatum { get; set; }
 
         [Required]
@@ -40,7 +42,9 @@ namespace Badminton_DAL
 
         public Club Club { get; set; }
 
-        public int ClubID { get; set; }
+        public int? ClubID { get; set; }
+
+        
 
         public ICollection<CategorieSpeler> CategoriesSpelers { get; set; }
        
