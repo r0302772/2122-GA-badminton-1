@@ -119,59 +119,6 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
-        #region overbodige properties? staan in comment
-        //private int _id;
-        //private string _voornaam;
-        //private string _familienaam;
-        //private string _telefoonnummer;
-        //private string _email;
-        //private DateTime _geboortedatum;
-        //private string _geslacht;
-
-        //public string Geslacht
-        //{
-        //    get { return _geslacht; }
-        //    set { _geslacht = value; }
-        //}
-
-        //public DateTime Geboortedatum
-        //{
-        //    get { return _geboortedatum; }
-        //    set { _geboortedatum = value; }
-        //}
-
-        //public string Email
-        //{
-        //    get { return _email; }
-        //    set { _email = value; }
-        //}
-
-        //public string Telefoonnummer
-        //{
-        //    get { return _telefoonnummer; }
-        //    set { _telefoonnummer = value; }
-        //}
-
-        //public string Familienaam
-        //{
-        //    get { return _familienaam; }
-        //    set { _familienaam = value; }
-        //}
-
-        //public string Voornaam
-        //{
-        //    get { return _voornaam; }
-        //    set { _voornaam = value; }
-        //}
-
-        //public int Id
-        //{
-        //    get { return _id; }
-        //    set { _id = value; }
-        //}
-
-        #endregion
-
         public void ZoekenViaClub()
         {
             List<Speler> spelers = DatabaseOperations.GetSpelerByClubId(GeselecteerdeClub.Id);
@@ -184,15 +131,8 @@ namespace Badminton_WPF.ViewModels
             Spelers = new ObservableCollection<Speler>(spelers);
         }
 
-        private void Toevoegen()
+        public void Toevoegen()
         {
-
-
-
-
-           
-            
-
             if (SpelerRecord.IsGeldig())
             {
 
@@ -258,7 +198,7 @@ namespace Badminton_WPF.ViewModels
 
         }
 
-        private void SpelerRecordInstellen()
+        public void SpelerRecordInstellen()
         {
             if (GeselecteerdeSpeler != null)
             {

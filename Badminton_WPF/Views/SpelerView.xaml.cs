@@ -23,7 +23,5 @@ namespace Badminton_WPF.Views
         {
             InitializeComponent();
         }
-
-       
     }
 }

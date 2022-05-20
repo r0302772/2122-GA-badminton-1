@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
 using NUnit.Framework;
 using System.Text;
 using System.Collections.Generic;
@@ -10,42 +9,106 @@ using Badminton_WPF.ViewModels;
 
 namespace SpelerUnitTest
 {
-    [TestClass]
+    [TestFixture]
     public class SpelerViewModelTest
     {
         SpelerViewModel model = new SpelerViewModel();
 
-        [TestMethod]
+        [Test]
         public void VoegSpelerToe()
         {
-            model.SpelerRecord = new Speler()
-            {
-                Id = 1,
-                Voornaam = "Suleyman",
-                Familienaam = "Yavas",
-                GeslachtID = 1,
-                ClubID = null,
-                Email = "test@test.be",
-                Telefoonnummer = "044444",
-                Geboortedatum = new DateTime(day: 20, month: 04, year: 1990)
-            };
-            Assert.Contains();
+            //Arrange
+            model.SpelerRecord.Voornaam = "Suleyman";
+            model.SpelerRecord.Familienaam = "Yavas";
+            model.SpelerRecord.GeslachtID = 1;
+            model.SpelerRecord.Email = "test@test.be";
+            model.SpelerRecord.Telefoonnummer = "044444";
+            model.SpelerRecord.Geboortedatum = new DateTime(day: 20, month: 04, year: 1990);
 
+            //Act
+            model.Toevoegen();
 
+            //Assert
+            Assert.AreEqual("", model.Foutmelding);
         }
 
-        [TestMethod]
-        public void VerwijderSpeler()
+        [Test]
+        public void VoornaamIngevuld()
         {
-        }
-        [TestMethod]
-        public void WijzigrSpeler()
-        {
+            //Arrange
+            model.SpelerRecord.Voornaam = "";
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.AreEqual(string.Empty, model.SpelerRecord.Voornaam);
         }
 
-        [TestMethod]
-        public void ZoekSpelerSpeler()
+        [Test]
+        public void FamilienaamIngevuld()
         {
+            //Arrange
+            model.SpelerRecord.Familienaam = "";
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.IsEmpty(model.SpelerRecord.Familienaam);
+        }
+
+        [Test]
+        public void GeslachtGeslecteerd()
+        {
+            //Arrange
+            model.SpelerRecord.GeslachtID = 0;
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.AreEqual(0, model.SpelerRecord.GeslachtID);
+        }
+
+        [Test]
+        public void EmailIngevuld()
+        {
+            //Arrange
+            model.SpelerRecord.Email = "";
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.AreEqual("", model.SpelerRecord.Email);
+        }
+
+        [Test]
+        public void TelefoonCorrectIngevuld()
+        {
+            //Arrange
+            model.SpelerRecord.Telefoonnummer = "0488332299";
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.That(model.SpelerRecord.Telefoonnummer, Has.Length.EqualTo(10));
+            Assert.IsTrue(int.TryParse(model.SpelerRecord.Telefoonnummer, out int telefoonnummer));
+        }
+
+        [Test]
+        public void GeboortedatumIngevuld()
+        {
+            //Arrange
+            model.SpelerRecord.Geboortedatum = new DateTime(day: 20, month: 04, year: 1990);
+
+            //Act
+            model.Toevoegen();
+
+            //Assert
+            Assert.IsInstanceOf<DateTime>(model.SpelerRecord.Geboortedatum);
         }
     }
 }

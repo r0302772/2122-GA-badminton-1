@@ -46,7 +46,7 @@ namespace Badminton_DAL
 
         
 
-        public ICollection<CategorieSpeler> CategoriesSpelers { get; set; }
+        public ICollection<CategorieSpelerWedstrijd> CategorieSpelerWedstrijden { get; set; }
        
     }
 }
