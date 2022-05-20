@@ -37,7 +37,8 @@
         <TextBox x:Name="_txtVolledigenaam" Text="{Binding txtVolledigenaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Naam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" 
+                 AutomationProperties.AutomationId="TextBoxVolledigenaam"/>
         <ComboBox x:Name="cmbClub"
               ItemsSource="{Binding Clubs}"   
            
@@ -49,8 +50,10 @@
 
         </ComboBox>
        
-        <Button  Content="Zoeken Op Naam" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023" />
-        <Button  Content="Zoeken Op Club" Grid.Row="1" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="ZoekenOpClub" Background="#E73013" />
+        <Button  Content="Zoeken Op Naam" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"
+                 AutomationProperties.AutomationId="ZoekenOpNaam"/>
+        <Button  Content="Zoeken Op Club" Grid.Row="1" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="ZoekenOpClub" Background="#F37023"
+                 AutomationProperties.AutomationId="ZoekenOpClub"/>
         
         <DataGrid ItemsSource="{Binding Spelers}"
                   SelectedItem="{Binding SpelerRecord}"
@@ -70,12 +73,14 @@
         <TextBox 
             Text="{Binding SpelerRecord.Familienaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Familienaam" 
-            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"/>
+            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"
+            AutomationProperties.AutomationId="Familienaam"/>
 
         <TextBox 
             Text="{Binding SpelerRecord.Voornaam, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Voornaam"
-            Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"/>
+            Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"
+            AutomationProperties.AutomationId="Voornaam"/>
 
         <ComboBox x:Name="cmbGeslacht"
               ItemsSource="{Binding Geslachten}"   
@@ -84,31 +89,43 @@
              SelectedValuePath="Id" 
                   SelectedItem="{Binding SpelerRecord.Geslacht}"
             materialDesign:HintAssist.Hint="Geslacht"
-            Width="150" Grid.Row="3" Grid.Column="2" Margin="0,20">
-
+            Width="150" Grid.Row="3" Grid.Column="2" Margin="0,20"
+                  AutomationProperties.AutomationId="Geslacht">
         </ComboBox>
 
         <TextBox 
             Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True, StringFormat='{}{0:dd/MM/yyyy}'}"
             materialDesign:HintAssist.Hint="Geboortedatum"
             
-            Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"/>
+            Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"
+            AutomationProperties.AutomationId="Geboortedatum"/>
+        
         <TextBox 
             Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"
-            Width="150" Grid.Row="4" Grid.Column="1" Margin="0,20"/>
+            Width="150" Grid.Row="4" Grid.Column="1" Margin="0,20"
+            AutomationProperties.AutomationId="Telefoonnummer"/>
+        
         <TextBox 
             Text="{Binding SpelerRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
-            Width="150" Grid.Row="4" Grid.Column="2" Margin="0,20"/>
+            Width="150" Grid.Row="4" Grid.Column="2" Margin="0,20"
+            AutomationProperties.AutomationId="Email"/>
 
-        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" Margin="15" Grid.Row="5" Grid.Column="0" Background="#E73023"/>
+        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
+                Margin="15" Grid.Row="5" Grid.Column="0" Background="#E73023"
+                AutomationProperties.AutomationId="Toevoegen"/>
                 
         <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
-                Content="Aanpassen"  Margin="15" Grid.Row="5" Grid.Column="1"/>
+                Content="Aanpassen"  Margin="15" Grid.Row="5" Grid.Column="1"
+                AutomationProperties.AutomationId="Aanpassen"/>
+        
         <Button Command="{Binding}" CommandParameter="Verwijderen"
-                Content="Verwijderen" Margin="15" Grid.Row="5" Grid.Column="3" Background="#E73023"/>
-        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"/>
+                Content="Verwijderen" Margin="15" Grid.Row="5" Grid.Column="3" Background="#E73023"
+                AutomationProperties.AutomationId="Verwijderen"/>
+        
+        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
+               AutomationProperties.AutomationId="Foutmelding"/>
     </Grid>
 </Window>
 

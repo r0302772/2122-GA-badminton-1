@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Badminton_WPF", "Badminton_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Badminton_DAL", "Badminton_DAL\Badminton_DAL.csproj", "{19B87532-96DA-466E-BBAF-0AC583EE133E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpelerUnitTest", "SpelerUnitTest\SpelerUnitTest.csproj", "{6E18F1BE-A458-44BB-A3B3-D12EC1675000}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Badminton_UnitTests", "SpelerUnitTest\Badminton_UnitTests.csproj", "{6E18F1BE-A458-44BB-A3B3-D12EC1675000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
