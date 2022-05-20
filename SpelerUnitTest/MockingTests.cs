@@ -93,7 +93,7 @@ namespace SpelerUnitTest
 
             //Assert
             Assert.NotNull(clubs);
-            Assert.IsInstanceOf<ObservableCollection<Speler>>(clubs);
+            Assert.IsInstanceOf<ObservableCollection<Club>>(clubs);
         }
     }
 }
