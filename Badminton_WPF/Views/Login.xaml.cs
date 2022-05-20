@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Badminton_WPF.Views
 {
     /// <summary>
-    /// Interaction logic for SpelerView.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class SpelerView : Window
+    public partial class Login : Window
     {
-        public SpelerView()
+        public Login()
         {
             InitializeComponent();
         }

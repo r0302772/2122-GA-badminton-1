@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Badminton_WPF", "Badminton_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Badminton_DAL", "Badminton_DAL\Badminton_DAL.csproj", "{19B87532-96DA-466E-BBAF-0AC583EE133E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpelerUnitTest", "SpelerUnitTest\SpelerUnitTest.csproj", "{6E18F1BE-A458-44BB-A3B3-D12EC1675000}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{19B87532-96DA-466E-BBAF-0AC583EE133E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19B87532-96DA-466E-BBAF-0AC583EE133E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19B87532-96DA-466E-BBAF-0AC583EE133E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E18F1BE-A458-44BB-A3B3-D12EC1675000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E18F1BE-A458-44BB-A3B3-D12EC1675000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E18F1BE-A458-44BB-A3B3-D12EC1675000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E18F1BE-A458-44BB-A3B3-D12EC1675000}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

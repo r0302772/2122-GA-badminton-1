@@ -12,14 +12,13 @@ namespace Badminton_DAL
         {
            
         }
-
+        public DbSet<Gebruiker> Gebruikers { get; set; }
         public DbSet<Speler> Spelers { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Werknemer> Personeel { get; set; }
         public DbSet<Geslacht> Geslachten { get; set; }
         public DbSet<Wedstrijd> Wedstrijden { get; set; }
-        public DbSet<CategorieSpelerWedstrijd> CategorienSpelersWedstrijden { get; set; }
-        public DbSet<CategorieSpeler> CategoriesSpelers { get; set; }
+        public DbSet<CategorieSpelerWedstrijd> CategorienSpelerWedstrijden { get; set; }
         public DbSet<CategorieSpelerRank> CategoriesSpelersRanks { get; set; }
         public DbSet<Categorie> Categorien { get; set; }
       

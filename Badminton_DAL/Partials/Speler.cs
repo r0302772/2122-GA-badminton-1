@@ -11,7 +11,7 @@ namespace Badminton_DAL
     {
         public override string this[string columnName]
         {
-            get
+           get
             {
                 if (columnName == /*nameof(Voornaam)*/ "Voornaam" && string.IsNullOrWhiteSpace(Voornaam))
                 {
@@ -21,7 +21,7 @@ namespace Badminton_DAL
                 {
                     return "Familienaam is een verplicht veld!";
                 }
-                //if (columnName == /*nameof(Geslacht)*/ "Geslacht" && string.IsNullOrWhiteSpace(Geslacht))
+                //if (columnName == /*nameof(Geslacht)*/ "GeslachtID" && GeslachtID >=0)
                 //{
                 //    return "Geslacht is een verplicht veld!";
                 //}

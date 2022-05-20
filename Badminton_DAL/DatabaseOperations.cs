@@ -35,7 +35,7 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Spelers
-                    .Where(x => (x.Voornaam.Contains(naam)) || (x.Familienaam.Contains( naam))).ToList();
+                    .Where(x => (x.Voornaam.Contains(naam)) || (x.Familienaam.Contains(naam))).ToList();
             }
         }
 
@@ -126,7 +126,7 @@ namespace Badminton_DAL
             }
         }
 
-       
+
 
         //testen
         public static int ClubToevoegen(Club club)
@@ -201,8 +201,18 @@ namespace Badminton_DAL
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
-               return  badmintonEntities.Geslachten.Include(x => x.Spelers).Where(g => g.Id == id).SingleOrDefault();
-                
+                return badmintonEntities.Geslachten.Include(x => x.Spelers).Where(g => g.Id == id).SingleOrDefault();
+
+            }
+        }
+        #endregion
+
+        #region
+        public static Gebruiker GetGebruikerById(int id)
+        {
+            using (BadmintonEntities entities = new BadmintonEntities())
+            {
+                return entities.Gebruikers.Where(x => x.Id == id).SingleOrDefault();
             }
         }
         #endregion

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Badminton_DAL
 {
-    [Table("Rank")]
-    public class Rank
+    [Table("Gebruiker")]
+   public class Gebruiker
     {
         [Key]
         public int Id { get; set; }
-
-        public int Niveau { get; set; }
-
-        public ICollection<CategorieSpelerRank> CategoriesSpelersRanks { get; set; }
+        [Required]
+        public string Gebruikernaam { get; set; }
+        [Required]
+        public string Wachtwoord { get; set; }
     }
 }

@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 namespace Badminton_DAL
 {
     [Table("Wedstrijd")]
-   public class Wedstrijd
+    public class Wedstrijd
     {
         [Key]
-       
         public int Id { get; set; }
 
         //[Required(ErrorMessage ="Score is verplicht")]

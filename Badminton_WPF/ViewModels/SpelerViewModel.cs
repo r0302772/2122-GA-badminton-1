@@ -105,6 +105,9 @@ namespace Badminton_WPF.ViewModels
             Geslachten = new ObservableCollection<Geslacht>(DatabaseOperations.GetGeslachten());
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             SpelerRecord = new Speler();
+            SpelerRecord.IsGeldig();
+
+
 
         }
 
@@ -115,59 +118,6 @@ namespace Badminton_WPF.ViewModels
                 return "";
             }
         }
-
-        #region overbodige properties? staan in comment
-        //private int _id;
-        //private string _voornaam;
-        //private string _familienaam;
-        //private string _telefoonnummer;
-        //private string _email;
-        //private DateTime _geboortedatum;
-        //private string _geslacht;
-
-        //public string Geslacht
-        //{
-        //    get { return _geslacht; }
-        //    set { _geslacht = value; }
-        //}
-
-        //public DateTime Geboortedatum
-        //{
-        //    get { return _geboortedatum; }
-        //    set { _geboortedatum = value; }
-        //}
-
-        //public string Email
-        //{
-        //    get { return _email; }
-        //    set { _email = value; }
-        //}
-
-        //public string Telefoonnummer
-        //{
-        //    get { return _telefoonnummer; }
-        //    set { _telefoonnummer = value; }
-        //}
-
-        //public string Familienaam
-        //{
-        //    get { return _familienaam; }
-        //    set { _familienaam = value; }
-        //}
-
-        //public string Voornaam
-        //{
-        //    get { return _voornaam; }
-        //    set { _voornaam = value; }
-        //}
-
-        //public int Id
-        //{
-        //    get { return _id; }
-        //    set { _id = value; }
-        //}
-
-        #endregion
 
         public void ZoekenViaClub()
         {
@@ -181,30 +131,25 @@ namespace Badminton_WPF.ViewModels
             Spelers = new ObservableCollection<Speler>(spelers);
         }
 
-        private void Toevoegen()
+        public void Toevoegen()
         {
-            if (GeselecteerdeGeslacht != null && GeselecteerdeClub!= null)
+            if (SpelerRecord.IsGeldig())
             {
-                SpelerRecord.ClubID = GeselecteerdeClub.Id;
-                SpelerRecord.GeslachtID = GeselecteerdeGeslacht.Id;
 
-                if (SpelerRecord.IsGeldig())
+
+                int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
+                if (ok > 0)
                 {
-
-
-                    int ok = DatabaseOperations.SpelerToevoegen(SpelerRecord);
-                    if (ok > 0)
-                    {
-                        Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
-                        Wissen();
-                    }
-                    else
-                    {
-                        Foutmelding = "Speler is niet toegevoegd!";
-                    }
+                    Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
+                    Wissen();
+                }
+                else
+                {
+                    Foutmelding = "Speler is niet toegevoegd!";
                 }
             }
         }
+
 
         public void Aanpassen()
         {
@@ -215,7 +160,7 @@ namespace Badminton_WPF.ViewModels
                     int ok = DatabaseOperations.SpelerAanpassen(SpelerRecord);
                     if (ok > 0)
                     {
-                        Spelers = new ObservableCollection < Speler > (DatabaseOperations.GetSpelers());
+                        Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
                         Wissen();
                     }
                     else
@@ -253,19 +198,16 @@ namespace Badminton_WPF.ViewModels
 
         }
 
-        private void SpelerRecordInstellen()
+        public void SpelerRecordInstellen()
         {
             if (GeselecteerdeSpeler != null)
             {
                 SpelerRecord = GeselecteerdeSpeler;
-                
+
                 //Geslacht = DatabaseOperations.GetGeslachtById(int.Parse(GeselecteerdeSpeler.GeslachtID));
                 //SpelerRecord.GeslachtID = GeselecteerdeGeslacht.Id;
             }
-            else
-            {
-                SpelerRecord = new Speler();
-            }
+
         }
 
         public void Wissen()
@@ -299,7 +241,7 @@ namespace Badminton_WPF.ViewModels
                 case "Aanpassen": Aanpassen(); break;
                 case "Zoeken": Zoeken(); break;
             }
-            
+
         }
 
         private string _foutmelding;
