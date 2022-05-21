@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Badminton_WPF.Views;
 
 namespace Badminton_WPF.ViewModels
 {
@@ -30,6 +31,18 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
+        private Gebruiker _gebruikerRecord;
+        public Gebruiker GebruikerRecord
+        {
+            get { return _gebruikerRecord; }
+            set
+            {
+                _gebruikerRecord = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+
         private ObservableCollection<Gebruiker> _gebruikers;
         public ObservableCollection<Gebruiker> Gebruikers
         {
@@ -49,16 +62,24 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
+        public string titel = "Badminton Vlaanderen";
         private void Inloggen()
         {
-
+            if (CheckLogin()==true)
+            {
+                MainMenuViewModel vm = new MainMenuViewModel();
+                MainMenuWindow view = new MainMenuWindow() { Title = $"{titel} | Admin" };
+                view.DataContext = vm;
+                view.Show();
+            }
+           
         }
 
         public override bool CanExecute(object parameter)
         {
             switch (parameter.ToString())
             {
-                case "Inloggen": return true;
+                case "Login": return true;
                   
             }
             return true;
@@ -68,27 +89,36 @@ namespace Badminton_WPF.ViewModels
         {
             switch (parameter.ToString())
             {
-                case "Inloggen": Inloggen();break;
+                case "Login": Inloggen();break;
                  
             }
         }
 
-        public void CheckLogin()
+        public bool CheckLogin()
         {
 
             var gebruiker = Gebruikers.Where(x => x.Gebruikernaam == this.Gebruiker.Gebruikernaam).SingleOrDefault();
             if (Gebruiker != null)
             {
-                MessageBox.Show("Inloggen mislukt, inloggegevens incorrect!");
-            }
-            else if (this.Gebruiker.Wachtwoord == Gebruiker.Wachtwoord && this.Gebruiker.Gebruikernaam == Gebruiker.Gebruikernaam)
-            {
-                MessageBox.Show("Inloggen geslaagd!" + Gebruiker.Gebruikernaam);
+            
+                if (this.Gebruiker.Wachtwoord == Gebruiker.Wachtwoord && this.Gebruiker.Gebruikernaam == Gebruiker.Gebruikernaam)
+                {
+                    MessageBox.Show("Inloggen geslaagd!" + Gebruiker.Gebruikernaam);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Inloggen mislukt controlleer je login gegevens!");
+                    return false;
+                }
             }
             else
             {
-                MessageBox.Show("Inloggen mislukt controlleer je login gegevens!");
-            }   
+                MessageBox.Show("Inloggen mislukt, inloggegevens incorrect!");
+                return false;
+            }
+
+        
         }
 
         

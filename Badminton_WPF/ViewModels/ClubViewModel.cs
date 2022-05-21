@@ -62,7 +62,7 @@ namespace Badminton_WPF.ViewModels
             Clubs = new ObservableCollection<Club>(clubs);
         }
 
-        private void Toevoegen()
+        public void Toevoegen()
         {
             if (ClubRecord.IsGeldig())
             {

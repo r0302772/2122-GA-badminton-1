@@ -13,6 +13,7 @@ namespace SpelerUnitTest
     public class UnitTests
     {
         SpelerViewModel model = new SpelerViewModel();
+        ClubViewModel clubModel = new ClubViewModel();
 
         [Test]
         public void VoegSpelerToe()
@@ -109,6 +110,45 @@ namespace SpelerUnitTest
 
             //Assert
             Assert.IsInstanceOf<DateTime>(model.SpelerRecord.Geboortedatum);
+        }
+        [Test]
+        public void ClubNaamIngevuld()
+        {
+            //Arrange
+            clubModel.ClubRecord.Clubnaam = "";
+
+            //Act
+            clubModel.Toevoegen();
+
+            //Assert
+            Assert.AreEqual(string.Empty, clubModel.ClubRecord.Clubnaam);
+        }
+
+        [Test]
+        public void ClubEmailIngevuld()
+        {
+            //Arrange
+            clubModel.ClubRecord.Email = "";
+
+            //Act
+            clubModel.Toevoegen();
+
+            //Assert
+            Assert.AreEqual("", clubModel.ClubRecord.Email);
+        }
+
+        [Test]
+        public void ClubTelefoonCorrectIngevuld()
+        {
+            //Arrange
+            clubModel.ClubRecord.Telefoonnummer = "0488332299";
+
+            //Act
+            clubModel.Toevoegen();
+
+            //Assert
+            Assert.That(clubModel.ClubRecord.Telefoonnummer, Has.Length.EqualTo(10));
+            Assert.IsTrue(int.TryParse(clubModel.ClubRecord.Telefoonnummer, out int telefoonnummer));
         }
     }
 }

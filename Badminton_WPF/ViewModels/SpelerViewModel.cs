@@ -161,7 +161,7 @@ namespace Badminton_WPF.ViewModels
                     if (ok > 0)
                     {
                         Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
-                        Wissen();
+                        //Wissen();
                     }
                     else
                     {

@@ -27,7 +27,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Image Source="/Images/logo-badminton-vlaanderen.png" Margin="10"/>
-        <Button x:Name="btnSpelers" Margin="10" Content="Spelers" Width="400" Grid.Row="1" Background="#E73023"  Command="{Binding }" CommandParameter="Spelers"/>
+        <Button x:Name="btnSpelers" Margin="10" Content="Spelers" Width="400" Grid.Row="1" Background="#E73023"  Command="{Binding }" CommandParameter="Spelers" AutomationProperties.AutomationId="SpelerView"/>
         <Button x:Name="btnClubs" Margin="10" Content="Clubs" Width="400" Grid.Row="2" Background="#E73023"  Command="{Binding }" CommandParameter="Clubs"/>
         <Button x:Name="btnWedstrijden" Margin="10" Content="Wedstrijden" Width="400" Background="#E73023" Grid.Row="3" Command="{Binding }" CommandParameter="Wedstrijden"/>
     </Grid>

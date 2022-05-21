@@ -23,10 +23,12 @@
             <TextBox  BorderBrush="White" HorizontalAlignment="Center" Width="225"  Foreground="White" FontFamily="verdana"  Text="{Binding Gebruiker, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,NotifyOnValidationError=True}"></TextBox>
         
             <Label x:Name="txtGebruikersnaam" FontFamily="verdana" FontSize="18" Content="Wachtwoord" Foreground="White" HorizontalAlignment="Center" Margin="0,20" />
+            <TextBlock Text="Password"/>
 
-            <PasswordBox  Name="txtWachtwoord" HorizontalAlignment="Center" BorderBrush="White" FontSize="18" Width="225" Foreground="White" />
+            <local:BindablePasswordBox  HorizontalAlignment="Center" BorderBrush="White" FontSize="18" Width="225" Foreground="White"  />
 
-            <Button Content="Login" Margin="20" Width="100" FontFamily="verdana" Background="Green"  />
+
+            <Button Content="Login" Margin="20" Width="100" FontFamily="verdana" Background="Green"  Command="{Binding }" CommandParameter="Login"/>
             
         </StackPanel>
        

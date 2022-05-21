@@ -27,6 +27,8 @@ namespace Badminton_DAL
         public string Gemeente { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
         public DateTime DatumOpgericht { get; set; }
 
         [Required]

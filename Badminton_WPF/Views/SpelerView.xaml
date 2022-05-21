@@ -56,9 +56,10 @@
                  AutomationProperties.AutomationId="ZoekenOpClub"/>
         
         <DataGrid ItemsSource="{Binding Spelers}"
-                  SelectedItem="{Binding SpelerRecord}"
+                  SelectedItem="{Binding SpelerRecord}" AutomationProperties.AutomationId="GeselecteerdeSpeler"
                   AutoGenerateColumns="False" IsReadOnly="true"
                   Grid.Row="2" Grid.ColumnSpan="3" Margin="10" >
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
