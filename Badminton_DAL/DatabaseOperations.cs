@@ -219,6 +219,18 @@ namespace Badminton_DAL
             }
         }
 
+        public static List<Werknemer> GetWerkenemerByClub(Club club)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Personeel
+                    .Include(x=> x.Club)
+                    .Include(x => x.Functie)
+                    .Where(x => x.ClubId == club.Id)
+                    .ToList();
+            }
+        }
+
         public static List<Werknemer> GetWerknemer()
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())

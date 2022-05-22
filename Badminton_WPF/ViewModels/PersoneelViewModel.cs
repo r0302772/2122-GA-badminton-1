@@ -40,11 +40,24 @@ namespace Badminton_WPF.ViewModels
             get { return _geselecteerdeWerknemer; }
             set
             {
-                _geselecteerdeWerknemer = value;    
+                _geselecteerdeWerknemer = value;
                 WerknemerRecordInstellen();
                 NotifyPropertyChanged();
             }
         }
+
+        private Club _geselecteerdeClub;
+
+        public Club GeselecteerdeClub
+        {
+            get { return _geselecteerdeClub; }
+            set
+            {
+                _geselecteerdeClub = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
         private ObservableCollection<Functie> _functies;
         public ObservableCollection<Functie> Functies
@@ -67,11 +80,14 @@ namespace Badminton_WPF.ViewModels
                 NotifyPropertyChanged();
             }
         }
+
+
         #endregion
 
 
         public PersoneelViewModel()
         {
+
             Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
             Functies = new ObservableCollection<Functie>(DatabaseOperations.GetFuncties());
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
@@ -99,22 +115,34 @@ namespace Badminton_WPF.ViewModels
         }
         public override bool CanExecute(object parameter)
         {
-            //returnwaarde true->methode mag uitgevoerd worden
-            //returnwaarde false -> methode mag niet uitgevoerd worden
-            //switch (parameter.ToString())
-            //{
-            //    case "Zoeken": return true;
-            //    case "Verwijderen": return true;
-            //    case "Toevoegen": return true;
-            //    case "Aanpassen": return true;
-            //}
+
+            switch (parameter.ToString())
+            {
+                case "Zoeken": return true;
+
+            }
             return true;
         }
 
         public override void Execute(object parameter)
         {
 
-           
+            switch (parameter.ToString())
+            {
+                case "Zoeken": ZoekWerknemerByClub(GeselecteerdeClub); break;
+                    //case "Verwijderen": return true;
+                    //case "Toevoegen": return true;
+                    //case "Aanpassen": return true;
+            }
+
+        }
+
+        public void ZoekWerknemerByClub(Club club)
+        {
+          
+            Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerkenemerByClub(club));
+            Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
+            Functies = new ObservableCollection<Functie>(DatabaseOperations.GetFuncties());
 
         }
 
