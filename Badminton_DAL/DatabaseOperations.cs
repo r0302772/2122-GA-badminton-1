@@ -44,7 +44,7 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Spelers
-                    .Where(x => x.Id == id).ToList();
+                    .Where(x => x.ClubID == id).ToList();
             }
         }
         //Werkt
@@ -202,6 +202,117 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Geslachten.Include(x => x.Spelers).Where(g => g.Id == id).SingleOrDefault();
+
+            }
+        }
+        #endregion
+
+        #region Werknemer
+        public static Werknemer GetWerknemerByPK(int pk)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Personeel
+                    .Include(x => x.Functie)
+                    .Include(x => x.Club)
+                    .Where(x => x.Id == pk).SingleOrDefault();
+            }
+        }
+
+        public static List<Werknemer> GetWerknemer()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Personeel
+                    .Include(x => x.Functie)
+                    .Include(y => y.Club)
+                    .ToList();
+            }
+        }
+
+ 
+
+        public static List<Werknemer> GetWerknemerByClubId(int id)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Personeel
+                    .Where(x => x.ClubId == id).ToList();
+            }
+        }
+        //Werkt
+        public static int WerknemerToevoegen(Werknemer werknemer)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+                    badmintonEntities.Personeel.Add(werknemer);
+                    return badmintonEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        //Werkt
+        public static int WerknemerAanpassen(Werknemer werknemer)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(werknemer).State = EntityState.Modified;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        //Werkt
+        public static int WerknemerVerwijderen(Werknemer werknemer)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+
+                    badmintonEntities.Entry(werknemer).State = EntityState.Deleted;
+                    return badmintonEntities.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+        #endregion
+
+        #region Functie
+        public static List<Functie> GetFuncties()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Functies.ToList();
+            }
+        }
+
+        public static Functie GetFunctieById(int id)
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Functies.Include(x => x.Werknemers).Where(f => f.Id == id).SingleOrDefault();
 
             }
         }

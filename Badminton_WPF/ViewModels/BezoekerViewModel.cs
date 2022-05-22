@@ -1,14 +1,13 @@
-﻿using Badminton_WPF.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Badminton_WPF.Views;
 using System.Windows.Input;
-
 namespace Badminton_WPF.ViewModels
 {
-    public class MainViewModel:ICommand
+    public class BezoekerViewModel:ICommand
     {
         public string titel = "Badminton Vlaanderen";
         public event EventHandler CanExecuteChanged;
@@ -19,9 +18,8 @@ namespace Badminton_WPF.ViewModels
             //returnwaarde false -> methode mag niet uitgevoerd worden
             switch (parameter.ToString())
             {
-                case "Admin": return true;
-                case "Bezoeker": return true;
-         
+                case "Clubs": return true;
+               
 
             }
             return true;
@@ -32,17 +30,17 @@ namespace Badminton_WPF.ViewModels
 
             switch (parameter.ToString())
             {
-                case "Admin": OpenAdminView(); break;
-                case "Bezoeker": OpenBezoekerView(); break;
-               
+                case "Club": OpenClubView(); break;
+                //case "Bezoeker": OpenBezoekerView(); break;
+
 
             }
         }
 
-        public void OpenAdminView()
+        public void OpenClubView()
         {
-            LoginViewModel vm = new LoginViewModel();
-            Login view = new Login() { Title = $"{titel} | Login" };
+            BezoekerClubViewModel vm = new BezoekerClubViewModel();
+            BezoekerClubView view = new BezoekerClubView() { Title = $"{titel} | Clubs" };
             view.DataContext = vm;
             view.Show();
         }

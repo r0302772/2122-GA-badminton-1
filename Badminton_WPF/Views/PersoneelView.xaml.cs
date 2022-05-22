@@ -15,15 +15,13 @@ using System.Windows.Shapes;
 namespace Badminton_WPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for PersoneelView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class PersoneelView : Window
     {
-        public MainView()
+        public PersoneelView()
         {
             InitializeComponent();
         }
-
-    
     }
 }

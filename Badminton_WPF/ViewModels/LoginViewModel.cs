@@ -31,16 +31,11 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
-        private Gebruiker _gebruikerRecord;
-        public Gebruiker GebruikerRecord
-        {
-            get { return _gebruikerRecord; }
-            set
-            {
-                _gebruikerRecord = value;
-                NotifyPropertyChanged();
-            }
-        }
+
+
+      
+
+
 
 
         private ObservableCollection<Gebruiker> _gebruikers;
@@ -65,13 +60,12 @@ namespace Badminton_WPF.ViewModels
         public string titel = "Badminton Vlaanderen";
         private void Inloggen()
         {
-            if (CheckLogin()==true)
-            {
-                MainMenuViewModel vm = new MainMenuViewModel();
-                MainMenuWindow view = new MainMenuWindow() { Title = $"{titel} | Admin" };
+            
+                AdminViewModel vm = new AdminViewModel();
+                AdminView view = new AdminView() { Title = $"{titel} | Admin" };
                 view.DataContext = vm;
                 view.Show();
-            }
+            
            
         }
 
@@ -96,6 +90,7 @@ namespace Badminton_WPF.ViewModels
 
         public bool CheckLogin()
         {
+            
 
             var gebruiker = Gebruikers.Where(x => x.Gebruikernaam == this.Gebruiker.Gebruikernaam).SingleOrDefault();
             if (Gebruiker != null)

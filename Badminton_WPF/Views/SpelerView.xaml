@@ -95,7 +95,8 @@
         </ComboBox>
 
         <TextBox 
-            Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True, StringFormat='{}{0:dd/MM/yyyy}'}"
+            Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
+            materialDesign:HintAssist.HelperText="Maand/Dag/Jaar"
             materialDesign:HintAssist.Hint="Geboortedatum"
             
             Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"

@@ -78,7 +78,7 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
-        private ObservableCollection<Club> _clubs;
+    private ObservableCollection<Club> _clubs;
         public ObservableCollection<Club> Clubs
         {
             get { return _clubs; }

@@ -33,9 +33,10 @@
         <TextBox x:Name="txtClubnaam" Text="{Binding txtClubnaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Clubnaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Margin="5" />
 
-        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="1" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
+        <Button  Content="Details" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Details" Background="#E73023"/>
 
         <DataGrid ItemsSource="{Binding Clubs}"
                   SelectedItem="{Binding GeselecteerdeClub}"
@@ -62,8 +63,9 @@
             Width="150" Grid.Row="2" Grid.Column="2" Margin="0,20"/>
 
         <TextBox 
-            Text="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True,StringFormat='{}{0:dd/MM/yyyy}'}"
+            Text="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True,StringFormat='dd/MM/yyyy}'}"
             materialDesign:HintAssist.Hint="Datum opgericht"
+            materialDesign:HintAssist.HelperText="Maand/Dag/Jaar"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20" />
         <TextBox 
             Text="{Binding ClubRecord.Telefoonnummer, ValidatesOnDataErrors=True}"

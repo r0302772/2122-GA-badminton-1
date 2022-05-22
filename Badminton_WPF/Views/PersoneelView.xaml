@@ -1,0 +1,87 @@
+﻿<Window x:Class="Badminton_WPF.Views.PersoneelView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Badminton_WPF.Views"
+          mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+
+        Title="MainWindow" Height="600" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+           
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <ComboBox x:Name="cmbClub"
+              ItemsSource="{Binding Clubs}"   
+           
+                 DisplayMemberPath="Clubnaam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeClub}"
+            materialDesign:HintAssist.Hint="Club"
+             Grid.Row="0"  Grid.ColumnSpan="2" Margin="10">
+
+        </ComboBox>
+
+
+        <Button  Content="Zoeken Op Club" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="ZoekenOpClub" Background="#E73023"
+                 AutomationProperties.AutomationId="ZoekenOpClub"/>
+
+        <DataGrid ItemsSource="{Binding Werknemers}"
+                  SelectedItem="{Binding WerknemerRecord}" AutomationProperties.AutomationId="GeselecteerdeSpeler"
+                  AutoGenerateColumns="False" IsReadOnly="true"
+                  Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
+                <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
+                <DataGridTextColumn Binding="{Binding Functie.Naam}" Header="Functie"/>
+                <DataGridTextColumn Binding="{Binding Adres}" Header="Adres"/>
+                <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente"/>
+                <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn Binding="{Binding Club.Clubnaam}" Header="Club"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+       
+
+        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
+                Margin="15" Grid.Row="6" Grid.Column="0" Background="#E73023"
+                AutomationProperties.AutomationId="Toevoegen"/>
+
+        <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
+                Content="Aanpassen"  Margin="15" Grid.Row="6" Grid.Column="1"
+                AutomationProperties.AutomationId="Aanpassen"/>
+
+        <Button Command="{Binding}" CommandParameter="Verwijderen"
+                Content="Verwijderen" Margin="15" Grid.Row="6" Grid.Column="3" Background="#E73023"
+                AutomationProperties.AutomationId="Verwijderen"/>
+
+        <Label Content="{Binding Foutmelding}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
+               AutomationProperties.AutomationId="Foutmelding"/>
+    </Grid>
+</Window>

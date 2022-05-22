@@ -1,0 +1,57 @@
+﻿<Window x:Class="Badminton_WPF.Views.BezoekerClubView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Badminton_WPF.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="ClubView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+         
+   
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="txtClubnaam" Text="{Binding txtClubnaam, ValidatesOnDataErrors=True}"
+                   materialDesign:HintAssist.Hint="Clubnaam"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
+
+        <DataGrid ItemsSource="{Binding Clubs}"
+                  SelectedItem="{Binding GeselecteerdeClub}"
+                  AutoGenerateColumns="False" IsReadOnly="true"
+                  Grid.Row="1" Grid.ColumnSpan="3" Margin="10" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Clubnaam}" Header="Clubnaam"/>
+                <DataGridTextColumn Binding="{Binding Adres}" Header="Adres"/>
+                <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente"/>
+                <DataGridTextColumn Binding="{Binding DatumOpgericht}" Header="Opgericht"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
+                <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+       
+
+        
+    </Grid>
+</Window>

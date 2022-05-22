@@ -83,10 +83,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\BezoekerClubViewModel.cs" />
+    <Compile Include="ViewModels\BezoekerViewModel.cs" />
     <Compile Include="ViewModels\ClubViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PersoneelViewModel.cs" />
+    <Compile Include="Views\BezoekerClubView.xaml.cs">
+      <DependentUpon>BezoekerClubView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BezoekerView.xaml.cs">
+      <DependentUpon>BezoekerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
@@ -96,11 +105,17 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainMenuWindow.xaml.cs">
-      <DependentUpon>MainMenuWindow.xaml</DependentUpon>
+    <Compile Include="Views\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersoneelToevoegenView.xaml.cs">
+      <DependentUpon>PersoneelToevoegenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PersoneelView.xaml.cs">
+      <DependentUpon>PersoneelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SpelerView.xaml.cs">
       <DependentUpon>SpelerView.xaml</DependentUpon>
@@ -111,6 +126,14 @@
     </Compile>
     <Compile Include="ViewModels\BasisViewModel.cs" />
     <Compile Include="ViewModels\SpelerViewModel.cs" />
+    <Page Include="Views\BezoekerClubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BezoekerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BindablePasswordBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,11 +146,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainMenuWindow.xaml">
+    <Page Include="Views\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersoneelToevoegenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersoneelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

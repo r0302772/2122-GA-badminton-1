@@ -1,4 +1,4 @@
-﻿<Window x:Class="Badminton_WPF.Views.MainView"
+﻿<Window x:Class="Badminton_WPF.Views.AdminView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,8 +13,8 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainView" Height="450" Width="800">
-
+        Title="AdminView" Height="500" Width="800">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -27,9 +27,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Image Source="/Images/logo-badminton-vlaanderen.png" Margin="10"/>
-        <Button x:Name="Bezoekers" Margin="10" Content="Bezoekers" Width="400" Grid.Row="1" Background="#E73023"  Command="{Binding }" CommandParameter="Bezoeker"/>
-        <Button x:Name="Admin" Margin="10" Content="Admin" Width="400" Grid.Row="2" Background="#E73023"  Command="{Binding }" CommandParameter="Admin"/>
-        
+        <Button x:Name="btnSpelers" Margin="10" Content="Spelers" Width="400" Grid.Row="1" Background="#E73023"  Command="{Binding }" CommandParameter="Spelers" AutomationProperties.AutomationId="SpelerView"/>
+        <Button x:Name="btnClubs" Margin="10" Content="Clubs" Width="400" Grid.Row="2" Background="#E73023"  Command="{Binding }" CommandParameter="Clubs"/>
+        <Button x:Name="btnWedstrijden" Margin="10" Content="Wedstrijden" Width="400" Background="#E73023" Grid.Row="3" Command="{Binding }" CommandParameter="Wedstrijden"/>
+        <Button x:Name="btnPersoneel" Margin="10" Content="Personeel" Width="400" Background="#E73023" Grid.Row="4" Command="{Binding }" CommandParameter="Personeel"/>
     </Grid>
-
+    
 </Window>
