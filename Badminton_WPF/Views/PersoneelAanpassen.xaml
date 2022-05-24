@@ -1,0 +1,99 @@
+﻿<Window x:Class="Badminton_WPF.Views.PersoneelAanpassen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Badminton_WPF.Views"
+        mc:Ignorable="d"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="PersoneelAanpassen" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" HorizontalAlignment="Center">
+            <TextBlock Text="Personeel Aanpassen" TextDecorations="Underline" FontSize="25" FontWeight="Bold" Foreground="#F73023"/>
+        </Label>
+        <TextBox 
+            Text="{Binding WerknemerRecord.Familienaam, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Familienaam" 
+            Width="150" Grid.Row="1" Grid.Column="0" Margin="0,20"
+            AutomationProperties.AutomationId="Familienaam"/>
+
+        <TextBox 
+            Text="{Binding WerknemerRecord.Voornaam, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Voornaam"
+            Width="150" Grid.Row="1" Grid.Column="1" Margin="0,20"
+            AutomationProperties.AutomationId="Voornaam"/>
+
+        <ComboBox x:Name="cmbFunctie"
+              ItemsSource="{Binding Functies}"   
+           SelectedValue="{Binding WerknemerRecord.FunctieId, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Naam"
+             SelectedValuePath="Id"
+                  SelectedItem="{Binding WerknemerRecord.Functie}"
+            materialDesign:HintAssist.Hint="Functie"
+            Width="150" Grid.Row="1" Grid.Column="2" Margin="0,20"
+                  AutomationProperties.AutomationId="Functie">
+        </ComboBox>
+
+        <TextBox 
+            Text="{Binding WerknemerRecord.Adres, ValidatesOnDataErrors=True}"
+            materialDesign:HintAssist.Hint="Adres"  
+            Width="150" Grid.Row="2" Grid.Column="0" Margin="0,20"
+            />
+        <TextBox 
+            Text="{Binding WerknemerRecord.Gemeente, ValidatesOnDataErrors=True}"
+            materialDesign:HintAssist.Hint="Gemeente"
+            Width="150" Grid.Row="2" Grid.Column="1" Margin="0,20"
+            />
+
+
+        <TextBox 
+            Text="{Binding WerknemerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
+            materialDesign:HintAssist.Hint="Telefoonnummer"
+            Width="150" Grid.Row="2" Grid.Column="2" Margin="0,20"
+            AutomationProperties.AutomationId="Telefoonnummer"/>
+
+        <TextBox 
+            Text="{Binding GeselecteerdeWerknemer.Email, ValidatesOnDataErrors=True}"
+            materialDesign:HintAssist.Hint="Email"
+            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"
+            AutomationProperties.AutomationId="Email"/>
+
+        <ComboBox x:Name="cmbClub"
+              ItemsSource="{Binding Clubs}"   
+           SelectedValue="{Binding WerknemerRecord.ClubId, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Clubnaam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeClub}"
+            materialDesign:HintAssist.Hint="Club"
+            Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"
+                  AutomationProperties.AutomationId="Functie">
+        </ComboBox>
+
+        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Aanpassen" 
+                Margin="15" Grid.Row="3" Grid.Column="3" Background="#F37023"
+                AutomationProperties.AutomationId="Aanpassen"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="4" Grid.Column="1" Foreground="Red" />
+    </Grid>
+</Window>

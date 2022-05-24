@@ -72,7 +72,7 @@
                 Margin="15" Grid.Row="2" Grid.Column="0" Background="#E73023"
                 AutomationProperties.AutomationId="Toevoegen"/>
 
-        <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
+        <Button Command="{Binding}" CommandParameter="OpenAanpassenWerknemerScherm" Background="#E73023"
                 Content="Aanpassen"  Margin="15" Grid.Row="2" Grid.Column="1"
                 AutomationProperties.AutomationId="Aanpassen"/>
 

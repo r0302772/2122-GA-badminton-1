@@ -103,9 +103,8 @@ namespace Badminton_WPF.ViewModels
             if (GeselecteerdeWerknemer != null)
             {
                 WerknemerRecord = GeselecteerdeWerknemer;
+
                 
-                //Geslacht = DatabaseOperations.GetGeslachtById(int.Parse(GeselecteerdeSpeler.GeslachtID));
-                //SpelerRecord.GeslachtID = GeselecteerdeGeslacht.Id;
             }
 
         }
@@ -123,7 +122,10 @@ namespace Badminton_WPF.ViewModels
             {
                 case "Zoeken": return true;
                 case "OpenToevoegenwerknemer": return true;
+                case "OpenAanpassenWerknemerScherm": return true;
                 case "Toevoegen": return true;
+                case "Aanpassen": return true;
+                case "Verwijderen": return true;
 
             }
             return true;
@@ -136,7 +138,10 @@ namespace Badminton_WPF.ViewModels
             {
                 case "Zoeken": ZoekWerknemerByClub(GeselecteerdeClub); break;
                 case "OpenToevoegenwerknemer": OpenToevoegenWerknemerScherm(); break;
+                case "OpenAanpassenWerknemerScherm":OpenAanpassenWerknemerScherm(); break;
                 case "Toevoegen": Toevoegen(); break;
+                case "Verwijderen": Verwijderen(); break;
+                case "Aanpassen": Aanpassen(); break;
             }
 
         }
@@ -163,6 +168,54 @@ namespace Badminton_WPF.ViewModels
 
         }
 
+
+        public void Aanpassen()
+        {
+            if (WerknemerRecord != null)
+            {
+                if (WerknemerRecord.IsGeldig())
+                {
+                    int ok = DatabaseOperations.WerknemerAanpassen(WerknemerRecord);
+                    if (ok > 0)
+                    {
+                        Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+                        //Wissen();
+                    }
+                    else
+                    {
+                        Foutmelding = "Werknemer is niet aangepast!";
+                    }
+                }
+            }
+            else
+            {
+                Foutmelding = "Eerst een Werknemer selecteren!";
+            }
+        }
+
+
+        public void Verwijderen()
+        {
+
+            if (WerknemerRecord != null)
+            {
+                int ok = DatabaseOperations.WerknemerVerwijderen(WerknemerRecord);
+                if (ok > 0)
+                {
+                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+                    Wissen();
+                }
+                else
+                {
+                    Foutmelding = "Werknemer is niet verwijderd!";
+                }
+            }
+            else
+            {
+                Foutmelding = "Eerst een werknemer selecteren!";
+            }
+
+        }
         public void Wissen()
         {
             GeselecteerdeWerknemer = null;
@@ -177,6 +230,22 @@ namespace Badminton_WPF.ViewModels
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             Functies = new ObservableCollection<Functie>(DatabaseOperations.GetFuncties());
 
+        }
+
+        public void OpenAanpassenWerknemerScherm()
+        {
+            if (GeselecteerdeWerknemer != null)
+            {
+                PersoneelViewModel viewmodel = new PersoneelViewModel();
+                PersoneelAanpassen view = new PersoneelAanpassen();
+                view.DataContext = viewmodel;
+                view.Show();
+            }
+            else
+            {
+                Foutmelding = "Gelieven een Werknemer te selecteren!";
+            }
+           
         }
 
         public void OpenToevoegenWerknemerScherm()

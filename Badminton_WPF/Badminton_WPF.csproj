@@ -111,6 +111,9 @@
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PersoneelAanpassen.xaml.cs">
+      <DependentUpon>PersoneelAanpassen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PersoneelToevoegenView.xaml.cs">
       <DependentUpon>PersoneelToevoegenView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PersoneelAanpassen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
