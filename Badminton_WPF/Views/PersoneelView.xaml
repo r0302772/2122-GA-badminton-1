@@ -29,9 +29,8 @@
            
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+           
+            
         </Grid.RowDefinitions>
 
 
@@ -67,21 +66,21 @@
             </DataGrid.Columns>
         </DataGrid>
 
-       
 
-        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
-                Margin="15" Grid.Row="6" Grid.Column="0" Background="#E73023"
+
+        <Button Command="{Binding}" CommandParameter="OpenToevoegenwerknemer" Content="Toevoegen" 
+                Margin="15" Grid.Row="2" Grid.Column="0" Background="#E73023"
                 AutomationProperties.AutomationId="Toevoegen"/>
 
         <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
-                Content="Aanpassen"  Margin="15" Grid.Row="6" Grid.Column="1"
+                Content="Aanpassen"  Margin="15" Grid.Row="2" Grid.Column="1"
                 AutomationProperties.AutomationId="Aanpassen"/>
 
         <Button Command="{Binding}" CommandParameter="Verwijderen"
-                Content="Verwijderen" Margin="15" Grid.Row="6" Grid.Column="3" Background="#E73023"
+                Content="Verwijderen" Margin="15" Grid.Row="2" Grid.Column="3" Background="#E73023"
                 AutomationProperties.AutomationId="Verwijderen"/>
 
-        <Label Content="{Binding Foutmelding}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
-               AutomationProperties.AutomationId="Foutmelding"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
+               AutomationProperties.AutomationId="Foutmelding" />
     </Grid>
 </Window>

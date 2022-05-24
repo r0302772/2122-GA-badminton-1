@@ -27,6 +27,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
            
           
         </Grid.RowDefinitions>
@@ -46,7 +47,7 @@
             AutomationProperties.AutomationId="Voornaam"/>
 
         <ComboBox x:Name="cmbFunctie"
-              ItemsSource="{Binding Functie}"   
+              ItemsSource="{Binding Functies}"   
            SelectedValue="{Binding WerknemerRecord.FunctieId, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Naam"
              SelectedValuePath="Id"
@@ -57,12 +58,12 @@
         </ComboBox>
 
         <TextBox 
-            Text="{Binding WerknemerRecord.Adres, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
+            Text="{Binding WerknemerRecord.Adres, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Adres"  
             Width="150" Grid.Row="2" Grid.Column="0" Margin="0,20"
             />
         <TextBox 
-            Text="{Binding WerknemerRecord.Gemeente, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
+            Text="{Binding WerknemerRecord.Gemeente, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Gemeente"
             Width="150" Grid.Row="2" Grid.Column="1" Margin="0,20"
             />
@@ -81,11 +82,11 @@
             AutomationProperties.AutomationId="Email"/>
         
         <ComboBox x:Name="cmbClub"
-              ItemsSource="{Binding Club}"   
+              ItemsSource="{Binding Clubs}"   
            SelectedValue="{Binding WerknemerRecord.ClubId, ValidatesOnDataErrors=False}"
-                 DisplayMemberPath="Naam"
-             SelectedValuePath="Id"
-                  SelectedItem="{Binding WerknemerRecord.Club}"
+                 DisplayMemberPath="Clubnaam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeClub}"
             materialDesign:HintAssist.Hint="Club"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"
                   AutomationProperties.AutomationId="Functie">
@@ -94,5 +95,6 @@
         <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
                 Margin="15" Grid.Row="3" Grid.Column="3" Background="#F37023"
                 AutomationProperties.AutomationId="Toevoegen"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="4" Grid.Column="1" Foreground="Red" />
     </Grid>
 </Window>
