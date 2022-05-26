@@ -102,9 +102,7 @@ namespace Badminton_WPF.ViewModels
         {
             if (GeselecteerdeWerknemer != null)
             {
-                WerknemerRecord = GeselecteerdeWerknemer;
-
-                
+                WerknemerRecord = GeselecteerdeWerknemer;  
             }
 
         }
@@ -128,7 +126,7 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": return true;
 
             }
-            return true;
+            return false;
         }
 
         public override void Execute(object parameter)
@@ -162,7 +160,7 @@ namespace Badminton_WPF.ViewModels
                 }
                 else
                 {
-                    Foutmelding = "Speler is niet toegevoegd!";
+                    Foutmelding = "Werknemer is niet toegevoegd!";
                 }
             }
 

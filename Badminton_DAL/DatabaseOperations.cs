@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Badminton_DAL
 {
@@ -84,6 +81,7 @@ namespace Badminton_DAL
                 return 0;
             }
         }
+
 
         //Werkt
         public static int SpelerVerwijderen(Speler speler)
@@ -165,7 +163,6 @@ namespace Badminton_DAL
                 return 0;
             }
         }
-
         //testen
         public static int ClubVerwijderen(Club club)
         {
@@ -330,12 +327,66 @@ namespace Badminton_DAL
         }
         #endregion
 
-        #region
+        #region gebruiker
         public static Gebruiker GetGebruikerById(int id)
         {
             using (BadmintonEntities entities = new BadmintonEntities())
             {
                 return entities.Gebruikers.Where(x => x.Id == id).SingleOrDefault();
+            }
+        }
+        #endregion
+
+        #region CategorieSpelerWedstrijd
+        public static List<CategorieSpelerWedstrijd> GetCategorieSpelerWedstrijden()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.CategorienSpelerWedstrijden
+                    .Include(x => x.SpelerHome1)
+                    .Include(x => x.SpelerHome2)
+                    .Include(x => x.SpelerAway1)
+                    .Include(x => x.SpelerAway2)
+                    .Include(x => x.Wedstrijd)
+                    .ToList();
+            }
+        }
+        #endregion
+        #region Wedstrijden
+        public static List<Wedstrijd> GetWedstrijden()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Wedstrijden
+                    .ToList();
+            }
+        }
+        public static int WedstrijdToevoegen(Wedstrijd wedstrijdRecord)
+        {
+            try
+            {
+                using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+                {
+                    badmintonEntities.Wedstrijden.Add(wedstrijdRecord);
+                    return badmintonEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        #endregion
+        #region Categories
+
+        public static List<Categorie> GetCategories()
+        {
+            using (BadmintonEntities badmintonEntities = new BadmintonEntities())
+            {
+                return badmintonEntities.Categorien
+                    .ToList();
             }
         }
         #endregion

@@ -57,13 +57,13 @@
         
         <DataGrid ItemsSource="{Binding Spelers}"
                   SelectedItem="{Binding SpelerRecord}" AutomationProperties.AutomationId="GeselecteerdeSpeler"
-                  AutoGenerateColumns="False" IsReadOnly="true"
+                  AutoGenerateColumns="False" IsReadOnly="True"
                   Grid.Row="2" Grid.ColumnSpan="3" Margin="10" >
             
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
-                <DataGridTextColumn Binding="{Binding Geslacht.Naam}"  Header="Geslacht"/>
+                <DataGridTextColumn Binding="{Binding Geslacht.Naam}"   Header="Geslacht"/>
                 <DataGridTextColumn Binding="{Binding Geboortedatum}" Header="Geboortedatum"/>
                 <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
@@ -85,7 +85,7 @@
 
         <ComboBox x:Name="cmbGeslacht"
               ItemsSource="{Binding Geslachten}"   
-           SelectedValue="{Binding SpelerRecord.GeslachtID, ValidatesOnDataErrors=False}"
+           SelectedValue="{Binding Id, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Naam"
              SelectedValuePath="Id" 
                   SelectedItem="{Binding SpelerRecord.Geslacht}"

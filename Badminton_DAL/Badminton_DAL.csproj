@@ -82,13 +82,17 @@
     <Compile Include="Functie.cs" />
     <Compile Include="Gebruiker.cs" />
     <Compile Include="Geslacht.cs" />
-    <Compile Include="Migrations\202205201242412_intial_3.0.cs" />
-    <Compile Include="Migrations\202205201242412_intial_3.0.designer.cs">
-      <DependentUpon>202205201242412_intial_3.0.cs</DependentUpon>
+    <Compile Include="Migrations\202205261155067_new.cs" />
+    <Compile Include="Migrations\202205261155067_new.designer.cs">
+      <DependentUpon>202205261155067_new.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202205201307249_intial_4.cs" />
-    <Compile Include="Migrations\202205201307249_intial_4.designer.cs">
-      <DependentUpon>202205201307249_intial_4.cs</DependentUpon>
+    <Compile Include="Migrations\202205261314082_added players.cs" />
+    <Compile Include="Migrations\202205261314082_added players.designer.cs">
+      <DependentUpon>202205261314082_added players.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205261318511_added scores.cs" />
+    <Compile Include="Migrations\202205261318511_added scores.designer.cs">
+      <DependentUpon>202205261318511_added scores.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Partials\Club.cs" />
@@ -105,11 +109,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202205201242412_intial_3.0.resx">
-      <DependentUpon>202205201242412_intial_3.0.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205261155067_new.resx">
+      <DependentUpon>202205261155067_new.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202205201307249_intial_4.resx">
-      <DependentUpon>202205201307249_intial_4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202205261314082_added players.resx">
+      <DependentUpon>202205261314082_added players.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205261318511_added scores.resx">
+      <DependentUpon>202205261318511_added scores.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

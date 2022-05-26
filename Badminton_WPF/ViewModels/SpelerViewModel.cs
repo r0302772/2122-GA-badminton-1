@@ -212,8 +212,7 @@ namespace Badminton_WPF.ViewModels
 
         public void Wissen()
         {
-            GeselecteerdeSpeler = null;
-            SpelerRecordInstellen();
+            SpelerRecord = new Speler();
             Foutmelding = "";
         }
 

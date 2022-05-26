@@ -15,10 +15,16 @@ namespace Badminton_DAL
         public int Id { get; set; }
 
         //[Required(ErrorMessage ="Score is verplicht")]
-        public int Score { get; set; }
-
+        public int ScoreHome { get; set; }
+        public int ScoreAway { get; set; }
         public string Seizoen { get; set; }
 
-        public CategorieSpelerWedstrijd CategorieSpelerWedstrijd { get; set; }
+        public ICollection<CategorieSpelerWedstrijd> CategorieSpelerWedstrijden { get; set; }
+
+        public bool IsGeldig()
+        {
+            //throw new NotImplementedException();
+            return true;
+        }
     }
 }

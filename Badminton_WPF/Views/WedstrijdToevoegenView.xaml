@@ -1,0 +1,68 @@
+﻿<Window x:Class="Badminton_WPF.Views.WedstrijdToevoegenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Badminton_WPF.Views"
+         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="WedstrijdToevoegenView" Height="450" Width="800">
+    
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+
+
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="cmbSpeler1"
+              ItemsSource="{Binding Spelers}"   
+           SelectedValue="{Binding SpelerRecord.ClubId, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Naam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding SpelerRecordHome}"
+            materialDesign:HintAssist.Hint="Speler"
+            Width="150" Grid.Row="0" Grid.Column="0" Margin="0,20"
+                  AutomationProperties.AutomationId="Functie">
+        </ComboBox>
+        <ComboBox x:Name="cmbSpeler2"
+              ItemsSource="{Binding Spelers}"   
+           SelectedValue="{Binding SpelerRecord.Id, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Naam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding SpelerRecordAway}"
+            materialDesign:HintAssist.Hint="Speler"
+            Width="150" Grid.Row="0" Grid.Column="1" Margin="0,20"
+                  AutomationProperties.AutomationId="Functie">
+        </ComboBox>
+        <TextBox 
+            Text="{Binding Wedstrijd.Score, ValidatesOnDataErrors=True}" 
+            materialDesign:HintAssist.Hint="Score" 
+            Width="150" Grid.Row="0" Grid.Column="3" Margin="0,20"
+            AutomationProperties.AutomationId="Score"/>
+
+        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
+                Margin="15" Grid.Row="3" Grid.Column="3" Background="#F37023"
+                AutomationProperties.AutomationId="Toevoegen"/>
+        <Label Content="{Binding Foutmelding}" Grid.Row="4" Grid.Column="1" Foreground="Red" />
+    </Grid>
+
+</Window>

@@ -50,6 +50,10 @@ namespace Badminton_WPF.ViewModels
 
         public void OpenWedstrijdenView()
         {
+            Wedstrijdviewmodel vm = new Wedstrijdviewmodel();
+            WedstrijdView view = new WedstrijdView() { Title = $"{titel} | Wedstrijden" };
+            view.DataContext= vm;
+            view.Show();
 
         }
 
