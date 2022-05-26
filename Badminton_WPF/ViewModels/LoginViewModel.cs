@@ -8,48 +8,34 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Badminton_WPF.Views;
+using System.Security;
+using System.Security.Cryptography;
 
 namespace Badminton_WPF.ViewModels
 {
     public class LoginViewModel : BasisViewModel
     {
+
         public LoginViewModel()
         {
             
         }
-
-        private Gebruiker _gebruiker;
-
-        public Gebruiker Gebruiker
+        private SecureString _SecurePassword;
+        public SecureString SecurePassword
         {
-            get { return _gebruiker; }
-            set
-            {
-                _gebruiker = value;
-                NotifyPropertyChanged(nameof(Gebruiker));
-                NotifyPropertyChanged(nameof(CheckLogin));
-            }
-        }
-
-
-
-      
-
-
-
-
-        private ObservableCollection<Gebruiker> _gebruikers;
-        public ObservableCollection<Gebruiker> Gebruikers
-        {
-            get { return _gebruikers; }
-            set
-            {
-                _gebruikers = value;
+            get { return _SecurePassword; }
+            set { _SecurePassword = value;
                 NotifyPropertyChanged();
             }
         }
+        private string _gebruikersnaam;
+        public string Gebruikersnaam
+        {
+            get { return _gebruikersnaam; }
+            set { _gebruikersnaam = value;}
+        }
 
-        public override string this[string columnName]
+    public override string this[string columnName]
         {
             get
             {
@@ -60,13 +46,39 @@ namespace Badminton_WPF.ViewModels
         public string titel = "Badminton Vlaanderen";
         private void Inloggen()
         {
-            
-                AdminViewModel vm = new AdminViewModel();
-                AdminView view = new AdminView() { Title = $"{titel} | Admin" };
-                view.DataContext = vm;
-                view.Show();
+            if (!CheckLogin())
+            {
+                MessageBox.Show("Foutieve login");
+                return;
+            }
+            AdminViewModel vm = new AdminViewModel();
+            AdminView view = new AdminView() { Title = $"{titel} | Admin" };
+            view.DataContext = vm;
+            view.Show();
             
            
+        }
+        public static String sha256_hash(String value)
+        {
+            StringBuilder Sb = new StringBuilder();
+
+            using (SHA256 hash = SHA256Managed.Create())
+            {
+                Encoding enc = Encoding.UTF8;
+                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (Byte b in result)
+                    Sb.Append(b.ToString("x2"));
+            }
+
+            return Sb.ToString();
+        }
+        private bool CheckLogin()
+        {
+            string hashedPassword = sha256_hash(SecurePassword.ToString());
+            Gebruiker gebruiker = DatabaseOperations.GetGebruikerByName(Gebruikersnaam);
+            if(gebruiker!=null) return hashedPassword.Equals(gebruiker.Wachtwoord);
+            return false;
         }
 
         public override bool CanExecute(object parameter)
@@ -86,34 +98,6 @@ namespace Badminton_WPF.ViewModels
                 case "Login": Inloggen();break;
                  
             }
-        }
-
-        public bool CheckLogin()
-        {
-            
-
-            var gebruiker = Gebruikers.Where(x => x.Gebruikernaam == this.Gebruiker.Gebruikernaam).SingleOrDefault();
-            if (Gebruiker != null)
-            {
-            
-                if (this.Gebruiker.Wachtwoord == Gebruiker.Wachtwoord && this.Gebruiker.Gebruikernaam == Gebruiker.Gebruikernaam)
-                {
-                    MessageBox.Show("Inloggen geslaagd!" + Gebruiker.Gebruikernaam);
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Inloggen mislukt controlleer je login gegevens!");
-                    return false;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Inloggen mislukt, inloggegevens incorrect!");
-                return false;
-            }
-
-        
         }
 
         

@@ -64,7 +64,7 @@
                 <DataGridTextColumn Binding="{Binding Familienaam}" Header="Familienaam"/>
                 <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam"/>
                 <DataGridTextColumn Binding="{Binding Geslacht.Naam}"   Header="Geslacht"/>
-                <DataGridTextColumn Binding="{Binding Geboortedatum}" Header="Geboortedatum"/>
+                <DataGridTextColumn Binding="{Binding Geboortedatum, StringFormat='dd/MM/yyyy'}" Header="Geboortedatum"/>
                 <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
                 <DataGridTextColumn Binding="{Binding Club}" Header="Club"/>
@@ -85,18 +85,18 @@
 
         <ComboBox x:Name="cmbGeslacht"
               ItemsSource="{Binding Geslachten}"   
-           SelectedValue="{Binding Id, ValidatesOnDataErrors=False}"
+           SelectedValue="{Binding SpelerRecord.GeslachtID, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Naam"
              SelectedValuePath="Id" 
-                  SelectedItem="{Binding SpelerRecord.Geslacht}"
+                  SelectedItem="{Binding GeselecteerdeGeslacht}"
             materialDesign:HintAssist.Hint="Geslacht"
             Width="150" Grid.Row="3" Grid.Column="2" Margin="0,20"
                   AutomationProperties.AutomationId="Geslacht">
         </ComboBox>
 
-        <TextBox 
-            Text="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
-            materialDesign:HintAssist.HelperText="Maand/Dag/Jaar"
+        <DatePicker
+            
+            SelectedDate="{Binding SpelerRecord.Geboortedatum, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
             materialDesign:HintAssist.Hint="Geboortedatum"
             
             Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"

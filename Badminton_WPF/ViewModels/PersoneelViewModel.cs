@@ -14,6 +14,15 @@ namespace Badminton_WPF.ViewModels
     {
         public string titel = "Badminton Vlaanderen";
         #region Properties
+        private Functie _functie;
+        public Functie functie
+        {
+            get { return _functie; }
+            set { _functie = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         private Werknemer _werknemerRecord;
 
         public Werknemer WerknemerRecord

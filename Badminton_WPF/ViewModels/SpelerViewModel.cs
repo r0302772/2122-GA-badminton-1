@@ -105,6 +105,7 @@ namespace Badminton_WPF.ViewModels
             Geslachten = new ObservableCollection<Geslacht>(DatabaseOperations.GetGeslachten());
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             SpelerRecord = new Speler();
+            SpelerRecord.Geboortedatum = DateTime.Now;
             SpelerRecord.IsGeldig();
 
 
@@ -161,7 +162,7 @@ namespace Badminton_WPF.ViewModels
                     if (ok > 0)
                     {
                         Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
-                        //Wissen();
+                        Wissen();
                     }
                     else
                     {
@@ -213,6 +214,7 @@ namespace Badminton_WPF.ViewModels
         public void Wissen()
         {
             SpelerRecord = new Speler();
+            SpelerRecord.Geboortedatum = DateTime.Now;
             Foutmelding = "";
         }
 

@@ -51,7 +51,7 @@
            SelectedValue="{Binding WerknemerRecord.FunctieId, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Naam"
              SelectedValuePath="Id"
-                  SelectedItem="{Binding WerknemerRecord.Functie}"
+                  SelectedItem="{Binding GeselecteerdeFunctie}"
             materialDesign:HintAssist.Hint="Functie"
             Width="150" Grid.Row="1" Grid.Column="2" Margin="0,20"
                   AutomationProperties.AutomationId="Functie">

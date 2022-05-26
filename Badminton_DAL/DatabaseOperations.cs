@@ -328,6 +328,13 @@ namespace Badminton_DAL
         #endregion
 
         #region gebruiker
+        public static Gebruiker GetGebruikerByName(string name)
+        {
+            using (BadmintonEntities entities = new BadmintonEntities())
+            {
+                return entities.Gebruikers.Where(x => x.Gebruikersnaam == name).SingleOrDefault();
+            }
+        }
         public static Gebruiker GetGebruikerById(int id)
         {
             using (BadmintonEntities entities = new BadmintonEntities())

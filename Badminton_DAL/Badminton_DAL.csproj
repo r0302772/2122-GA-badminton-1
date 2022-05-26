@@ -94,6 +94,10 @@
     <Compile Include="Migrations\202205261318511_added scores.designer.cs">
       <DependentUpon>202205261318511_added scores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205261515352_securestring.cs" />
+    <Compile Include="Migrations\202205261515352_securestring.designer.cs">
+      <DependentUpon>202205261515352_securestring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Partials\Club.cs" />
     <Compile Include="Partials\Geslacht.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205261318511_added scores.resx">
       <DependentUpon>202205261318511_added scores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205261515352_securestring.resx">
+      <DependentUpon>202205261515352_securestring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

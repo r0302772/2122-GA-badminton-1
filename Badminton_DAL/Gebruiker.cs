@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,8 +15,9 @@ namespace Badminton_DAL
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Gebruikernaam { get; set; }
+        public string Gebruikersnaam { get; set; }
         [Required]
+        
         public string Wachtwoord { get; set; }
     }
 }
