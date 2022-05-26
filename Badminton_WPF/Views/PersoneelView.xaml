@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
 
-        Title="MainWindow" Height="600" Width="900">
+        Title="MainWindow" Height="600" Width="1200">
 
     <Grid>
         <Grid.ColumnDefinitions>

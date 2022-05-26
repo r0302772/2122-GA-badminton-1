@@ -75,23 +75,24 @@
             AutomationProperties.AutomationId="Telefoonnummer"/>
 
         <TextBox 
-            Text="{Binding GeselecteerdeWerknemer.Email, ValidatesOnDataErrors=True}"
+            Text="{Binding WerknemerRecord.Email, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Email"
             Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"
             AutomationProperties.AutomationId="Email"/>
 
         <ComboBox x:Name="cmbClub"
               ItemsSource="{Binding Clubs}"   
+                
            SelectedValue="{Binding WerknemerRecord.ClubId, ValidatesOnDataErrors=False}"
                  DisplayMemberPath="Clubnaam"
              SelectedValuePath="Id" 
-                  SelectedItem="{Binding GeselecteerdeClub}"
+                  SelectedItem="{Binding WerknemerRecord.Club}"
             materialDesign:HintAssist.Hint="Club"
             Width="150" Grid.Row="3" Grid.Column="1" Margin="0,20"
                   AutomationProperties.AutomationId="Functie">
         </ComboBox>
 
-        <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Aanpassen" 
+        <Button Command="{Binding}" CommandParameter="Aanpassen" Content="Aanpassen" 
                 Margin="15" Grid.Row="3" Grid.Column="3" Background="#F37023"
                 AutomationProperties.AutomationId="Aanpassen"/>
         <Label Content="{Binding Foutmelding}" Grid.Row="4" Grid.Column="1" Foreground="Red" />

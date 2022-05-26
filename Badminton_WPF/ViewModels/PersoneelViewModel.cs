@@ -145,7 +145,7 @@ namespace Badminton_WPF.ViewModels
             }
 
         }
-
+        
         public void Toevoegen()
         {
 
@@ -168,6 +168,7 @@ namespace Badminton_WPF.ViewModels
 
         }
 
+        
 
         public void Aanpassen()
         {
@@ -179,7 +180,7 @@ namespace Badminton_WPF.ViewModels
                     if (ok > 0)
                     {
                         Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
-                        //Wissen();
+                       personeelAanpassenView.Close();
                     }
                     else
                     {
@@ -231,15 +232,18 @@ namespace Badminton_WPF.ViewModels
             Functies = new ObservableCollection<Functie>(DatabaseOperations.GetFuncties());
 
         }
+        
 
+        PersoneelAanpassen personeelAanpassenView  = new PersoneelAanpassen();
         public void OpenAanpassenWerknemerScherm()
         {
-            if (GeselecteerdeWerknemer != null)
+            if (WerknemerRecord != null)
             {
-                PersoneelViewModel viewmodel = new PersoneelViewModel();
-                PersoneelAanpassen view = new PersoneelAanpassen();
-                view.DataContext = viewmodel;
-                view.Show();
+                personeelAanpassenView = new PersoneelAanpassen() { Title =$"{titel} | Werknemer aanpassen"};
+                
+
+                personeelAanpassenView.DataContext = this;
+                personeelAanpassenView.Show();
             }
             else
             {
