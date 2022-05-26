@@ -132,16 +132,13 @@ namespace Badminton_WPF.ViewModels
             {
                 ClubRecord = GeselecteerdeClub;
             }
-            else
-            {
-                ClubRecord = new Club();
-            }
+
         }
 
         public void Wissen()
         {
-            GeselecteerdeClub = null;
-            ClubRecordInstellen();
+            ClubRecord = new Club();
+            ClubRecord.DatumOpgericht = DateTime.Now;
             Foutmelding = "";
         }
 
@@ -149,6 +146,8 @@ namespace Badminton_WPF.ViewModels
         {
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             ClubRecord = new Club();
+            ClubRecord.DatumOpgericht = DateTime.Now;
+            ClubRecord.IsGeldig();
         }
 
         public override string this[string columnName]

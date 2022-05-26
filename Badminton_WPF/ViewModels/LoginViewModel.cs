@@ -15,11 +15,13 @@ namespace Badminton_WPF.ViewModels
 {
     public class LoginViewModel : BasisViewModel
     {
-
+      
         public LoginViewModel()
         {
             
         }
+
+        
         private SecureString _SecurePassword;
         public SecureString SecurePassword
         {

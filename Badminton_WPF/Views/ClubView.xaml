@@ -61,12 +61,14 @@
             Text="{Binding ClubRecord.Gemeente, ValidatesOnDataErrors=True}" 
             materialDesign:HintAssist.Hint="Gemeente"
             Width="150" Grid.Row="2" Grid.Column="2" Margin="0,20"/>
-
-        <TextBox 
-            Text="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True,StringFormat='dd/MM/yyyy}'}"
-            materialDesign:HintAssist.Hint="Datum opgericht"
-            materialDesign:HintAssist.HelperText="Maand/Dag/Jaar"
-            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20" />
+        
+        <DatePicker
+            
+            SelectedDate="{Binding ClubRecord.DatumOpgericht, ValidatesOnDataErrors=True, StringFormat='dd/MM/yyyy}'}"
+            materialDesign:HintAssist.Hint="Datum Opgericht"
+            
+            Width="150" Grid.Row="3" Grid.Column="0" Margin="0,20"/>
+        
         <TextBox 
             Text="{Binding ClubRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"

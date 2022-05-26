@@ -101,7 +101,9 @@
             
             Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"
             AutomationProperties.AutomationId="Geboortedatum"/>
-        
+
+     
+
         <TextBox 
             Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
             materialDesign:HintAssist.Hint="Telefoonnummer"

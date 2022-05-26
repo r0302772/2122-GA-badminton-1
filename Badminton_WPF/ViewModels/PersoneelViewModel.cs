@@ -163,9 +163,10 @@ namespace Badminton_WPF.ViewModels
                 int ok = DatabaseOperations.WerknemerToevoegen(WerknemerRecord);
                 if (ok > 0)
                 {
-
+                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
                     Wissen();
                     MessageBox.Show("Werknemer succesvol toegevoegd aan club", "melding", MessageBoxButton.OK, MessageBoxImage.Information);
+                    personeelToevoegenView.Close();
                 }
                 else
                 {
@@ -259,12 +260,13 @@ namespace Badminton_WPF.ViewModels
            
         }
 
+        PersoneelToevoegenView personeelToevoegenView = new PersoneelToevoegenView();
         public void OpenToevoegenWerknemerScherm()
         {
-            PersoneelViewModel viewmodel = new PersoneelViewModel();
-            PersoneelToevoegenView view = new PersoneelToevoegenView() { Title = $"{titel} | Werknemer toevoegen" };
-            view.DataContext = viewmodel;
-            view.Show();
+            personeelToevoegenView = new PersoneelToevoegenView() { Title = $"{titel} | Werknemer toevoegen" };
+
+            personeelToevoegenView.DataContext = this;
+            personeelToevoegenView.Show();
         }
 
         private string _foutmelding;
