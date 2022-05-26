@@ -34,6 +34,7 @@ namespace Badminton_WPF.ViewModels
             {
                 case "Admin": OpenAdminView(); break;
                 case "Bezoeker": OpenBezoekerView(); break;
+                
                
 
             }

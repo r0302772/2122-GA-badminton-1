@@ -44,7 +44,10 @@ namespace Badminton_DAL
 
         public int? ClubID { get; set; }
 
-        
+        public string VolledigeNaam
+        {
+            get { return Voornaam + " " + Familienaam; }
+        }
 
         public ICollection<CategorieSpelerWedstrijd> CategorieSpelerWedstrijden { get; set; }
        

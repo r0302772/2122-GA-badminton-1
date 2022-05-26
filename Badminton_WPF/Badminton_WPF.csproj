@@ -90,6 +90,7 @@
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PersoneelViewModel.cs" />
+    <Compile Include="ViewModels\Wedstrijdviewmodel.cs" />
     <Compile Include="Views\BezoekerClubView.xaml.cs">
       <DependentUpon>BezoekerClubView.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,12 @@
     </Compile>
     <Compile Include="ViewModels\BasisViewModel.cs" />
     <Compile Include="ViewModels\SpelerViewModel.cs" />
+    <Compile Include="Views\WedstrijdToevoegenView.xaml.cs">
+      <DependentUpon>WedstrijdToevoegenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WedstrijdView.xaml.cs">
+      <DependentUpon>WedstrijdView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\BezoekerClubView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +177,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SpelerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WedstrijdToevoegenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WedstrijdView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
