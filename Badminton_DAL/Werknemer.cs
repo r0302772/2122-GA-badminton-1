@@ -45,5 +45,6 @@ namespace Badminton_DAL
         public Functie Functie { get; set; }
         public Club Club { get; set; }
 
+        
     }
 }

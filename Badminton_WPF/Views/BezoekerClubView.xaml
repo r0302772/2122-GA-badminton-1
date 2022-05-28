@@ -31,10 +31,10 @@
         <TextBox x:Name="txtClubnaam" Text="{Binding txtClubnaam, ValidatesOnDataErrors=True}"
                    materialDesign:HintAssist.Hint="Clubnaam"
                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" />
+                   Grid.Row="0" Grid.Column="0"  Margin="5" />
 
-        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
-
+        <Button  Content="Zoeken" Grid.Row="0" Grid.Column="1" Margin="5"  Command="{Binding}" CommandParameter="Zoeken" Background="#E73023"/>
+        <Button  Content="Details" Grid.Row="0" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="ToonDetails" Background="#E73023"/>
         <DataGrid ItemsSource="{Binding Clubs}"
                   SelectedItem="{Binding GeselecteerdeClub}"
                   AutoGenerateColumns="False" IsReadOnly="true"
@@ -43,10 +43,6 @@
                 <DataGridTextColumn Binding="{Binding Clubnaam}" Header="Clubnaam"/>
                 <DataGridTextColumn Binding="{Binding Adres}" Header="Adres"/>
                 <DataGridTextColumn Binding="{Binding Gemeente}" Header="Gemeente"/>
-                <DataGridTextColumn Binding="{Binding DatumOpgericht}" Header="Opgericht"/>
-                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
-                <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
-                
             </DataGrid.Columns>
         </DataGrid>
 

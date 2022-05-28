@@ -48,6 +48,11 @@ namespace Badminton_WPF.ViewModels
         public string titel = "Badminton Vlaanderen";
         private void Inloggen()
         {
+            if (Gebruikersnaam==null || SecurePassword ==null)
+            {
+                MessageBox.Show("Gebruikersnaam en wachtwoord zijn verplicht!","Foutmelding",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
             if (!CheckLogin())
             {
                 MessageBox.Show("Foutieve login");

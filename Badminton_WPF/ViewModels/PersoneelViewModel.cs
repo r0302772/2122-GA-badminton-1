@@ -100,7 +100,7 @@ namespace Badminton_WPF.ViewModels
         public PersoneelViewModel()
         {
 
-            Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+            Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemers());
             Functies = new ObservableCollection<Functie>(DatabaseOperations.GetFuncties());
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             WerknemerRecord = new Werknemer();
@@ -111,7 +111,7 @@ namespace Badminton_WPF.ViewModels
         {
             if (GeselecteerdeWerknemer != null)
             {
-                WerknemerRecord = GeselecteerdeWerknemer;  
+                WerknemerRecord = GeselecteerdeWerknemer;
             }
 
         }
@@ -163,7 +163,7 @@ namespace Badminton_WPF.ViewModels
                 int ok = DatabaseOperations.WerknemerToevoegen(WerknemerRecord);
                 if (ok > 0)
                 {
-                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemers());
                     Wissen();
                     MessageBox.Show("Werknemer succesvol toegevoegd aan club", "melding", MessageBoxButton.OK, MessageBoxImage.Information);
                     personeelToevoegenView.Close();
@@ -187,7 +187,7 @@ namespace Badminton_WPF.ViewModels
                     int ok = DatabaseOperations.WerknemerAanpassen(WerknemerRecord);
                     if (ok > 0)
                     {
-                        Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+                        Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemers());
                        personeelAanpassenView.Close();
                     }
                     else
@@ -211,7 +211,7 @@ namespace Badminton_WPF.ViewModels
                 int ok = DatabaseOperations.WerknemerVerwijderen(WerknemerRecord);
                 if (ok > 0)
                 {
-                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemer());
+                    Werknemers = new ObservableCollection<Werknemer>(DatabaseOperations.GetWerknemers());
                     Wissen();
                 }
                 else

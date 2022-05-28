@@ -1,2 +1,0 @@
-﻿INSERT INTO dbo.Personeel (Familienaam,Voornaam,Adres,Gemeente,Telefoonnummer,Email,FunctieId,ClubId)
-VALUES ('Janssens','Jan','Groenplaats 52','Antwerpen','0488992200','jan.janssens@hotmail.com',1,9);

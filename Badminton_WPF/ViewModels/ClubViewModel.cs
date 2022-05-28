@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Badminton_DAL;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Badminton_WPF.ViewModels
 {
@@ -126,6 +127,43 @@ namespace Badminton_WPF.ViewModels
 
         }
 
+        public void ToonDetails()
+        {
+            if (GeselecteerdeClub == null)
+            {
+                 Foutmelding = "Eerst een club selecteren!";
+                return;
+            }
+            List<Werknemer> werknemers = DatabaseOperations.GetWerknemerByClubId(GeselecteerdeClub.Id);
+            string details = "";
+                details += "Voorzitter:\n";
+            foreach(var werknemer in werknemers)
+            {
+                
+                if (werknemer.Functie.Naam.ToLower() =="voorzitter")
+                {
+                    details += $" {werknemer.Voornaam} {werknemer.Familienaam}\n";
+                }
+               
+
+               
+            }
+
+            details += "Contactpersoon:\n";
+            foreach (var werknemer in werknemers)
+            {
+
+                if (werknemer.Functie.Naam.ToLower() == "contactpersoon")
+                {
+                    details += $" {werknemer.Voornaam} {werknemer.Familienaam}\n";
+                }
+
+
+            }
+
+            MessageBox.Show(details);
+        }
+
         private void ClubRecordInstellen()
         {
             if (GeselecteerdeClub != null)
@@ -168,6 +206,7 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": return true;
                 case "Toevoegen": return true;
                 case "Aanpassen": return true;
+                case "ToonDetails": return true;
             }
             return true;
         }
@@ -181,6 +220,7 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": Verwijderen(); break;
                 case "Aanpassen": Aanpassen(); break;
                 case "Zoeken": Zoeken(); break;
+                case "ToonDetails": ToonDetails(); break;
             }
         }
 
