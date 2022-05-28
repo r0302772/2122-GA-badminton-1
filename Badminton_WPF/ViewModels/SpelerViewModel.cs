@@ -99,6 +99,17 @@ namespace Badminton_WPF.ViewModels
             }
         }
 
+        private Club _geselecteerdeSpelerClub;
+        public Club GeselecteerdeSpelerClub
+        {
+            get { return _geselecteerdeSpelerClub; }
+            set
+            {
+                _geselecteerdeSpelerClub = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public SpelerViewModel()
         {
             Spelers = new ObservableCollection<Speler>(DatabaseOperations.GetSpelers());
@@ -106,7 +117,7 @@ namespace Badminton_WPF.ViewModels
             Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
             SpelerRecord = new Speler();
             SpelerRecord.Geboortedatum = DateTime.Now;
-            SpelerRecord.IsGeldig();
+            //SpelerRecord.IsGeldig();
 
 
 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Badminton_DAL;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Badminton_WPF.ViewModels
 {
@@ -28,6 +29,18 @@ namespace Badminton_WPF.ViewModels
             set
             {
                 _txtClubnaam = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Club _geselecteerdeClub;
+        public Club GeselecteerdeClub
+        {
+            get { return _geselecteerdeClub; }
+            set
+            {
+                _geselecteerdeClub = value;
+                
                 NotifyPropertyChanged();
             }
         }
@@ -57,7 +70,7 @@ namespace Badminton_WPF.ViewModels
             switch (parameter.ToString())
             {
                 case "Zoeken": return true;
-
+                case "ToonDetails":return true;
             }
             return true;
         }
@@ -69,6 +82,7 @@ namespace Badminton_WPF.ViewModels
             {
 
                 case "Zoeken": Zoeken(); break;
+                case "ToonDetails": ToonDetails(); break;
             }
         }
 
@@ -81,6 +95,52 @@ namespace Badminton_WPF.ViewModels
                 _foutmelding = value;
                 NotifyPropertyChanged();
             }
+        }
+
+
+        public void ToonDetails()
+        {
+            if (GeselecteerdeClub == null)
+            {
+                Foutmelding = "Eerst een club selecteren!";
+                return;
+            }
+            List<Werknemer> werknemers = DatabaseOperations.GetWerknemerByClubId(GeselecteerdeClub.Id);
+            List<Speler> spelers = DatabaseOperations.GetSpelerByClubId(GeselecteerdeClub.Id);
+            string details = "";
+            details += $"Clubnaam:{GeselecteerdeClub.Clubnaam}\n" +
+                $"Adres: {GeselecteerdeClub.Adres} {GeselecteerdeClub.Gemeente}\n" +
+                $"Opgericht:{GeselecteerdeClub.DatumOpgericht}\n" +
+                $"Telefoon: {GeselecteerdeClub.Telefoonnummer}\n" +
+                $"Email: {GeselecteerdeClub.Email}\n" +
+             $"Aantal spelers: {spelers.Count}\n";
+
+            details += "Voorzitter:\n";
+            foreach (var werknemer in werknemers)
+            {
+
+                if (werknemer.Functie.Naam.ToLower() == "voorzitter")
+                {
+                    details += $" {werknemer.Voornaam} {werknemer.Familienaam}\n";
+                }
+
+
+
+            }
+
+            details += "Contactpersoon:\n";
+            foreach (var werknemer in werknemers)
+            {
+
+                if (werknemer.Functie.Naam.ToLower() == "contactpersoon")
+                {
+                    details += $" {werknemer.Voornaam} {werknemer.Familienaam}\n";
+                }
+
+
+            }
+
+            MessageBox.Show(details,$"{GeselecteerdeClub.Clubnaam}");
         }
     }
 }

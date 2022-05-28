@@ -40,9 +40,10 @@ namespace Badminton_DAL
         public int GeslachtID { get; set; }
         public Geslacht Geslacht { get; set; }
 
+        public int? ClubID { get; set; }
         public Club Club { get; set; }
 
-        public int? ClubID { get; set; }
+       
 
         public string VolledigeNaam
         {

@@ -23,7 +23,9 @@ namespace Badminton_DAL
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
-                return badmintonEntities.Spelers.Include(x => x.Geslacht).ToList();
+                return badmintonEntities.Spelers.Include(x => x.Geslacht)
+                    .Include(x => x.Club)
+                    .ToList();
             }
         }
 
@@ -228,7 +230,7 @@ namespace Badminton_DAL
             }
         }
 
-        public static List<Werknemer> GetWerknemer()
+        public static List<Werknemer> GetWerknemers()
         {
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
@@ -246,6 +248,7 @@ namespace Badminton_DAL
             using (BadmintonEntities badmintonEntities = new BadmintonEntities())
             {
                 return badmintonEntities.Personeel
+                    .Include(x => x.Functie)
                     .Where(x => x.ClubId == id).ToList();
             }
         }

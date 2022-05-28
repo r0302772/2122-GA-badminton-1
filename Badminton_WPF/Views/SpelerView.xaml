@@ -15,7 +15,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
 
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="900">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -28,6 +28,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -55,7 +56,7 @@
         <Button  Content="Zoeken Op Club" Grid.Row="1" Grid.Column="2" Margin="5"  Command="{Binding}" CommandParameter="ZoekenOpClub" Background="#F37023"
                  AutomationProperties.AutomationId="ZoekenOpClub"/>
         
-        <DataGrid ItemsSource="{Binding Spelers}"
+        <DataGrid ItemsSource="{Binding Spelers}" MinHeight="150"
                   SelectedItem="{Binding SpelerRecord}" AutomationProperties.AutomationId="GeselecteerdeSpeler"
                   AutoGenerateColumns="False" IsReadOnly="True"
                   Grid.Row="2" Grid.ColumnSpan="3" Margin="10" >
@@ -67,7 +68,7 @@
                 <DataGridTextColumn Binding="{Binding Geboortedatum, StringFormat='dd/MM/yyyy'}" Header="Geboortedatum"/>
                 <DataGridTextColumn Binding="{Binding Telefoonnummer}" Header="Telefoonnummer"/>
                 <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
-                <DataGridTextColumn Binding="{Binding Club}" Header="Club"/>
+                <DataGridTextColumn Binding="{Binding Club.Clubnaam}" Header="Club"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -102,7 +103,16 @@
             Width="150" Grid.Row="4" Grid.Column="0" Margin="0,20"
             AutomationProperties.AutomationId="Geboortedatum"/>
 
-     
+        <ComboBox x:Name="cmbclubs"
+              ItemsSource="{Binding Clubs}"   
+           SelectedValue="{Binding SpelerRecord.ClubID, ValidatesOnDataErrors=False}"
+                 DisplayMemberPath="Clubnaam"
+             SelectedValuePath="Id" 
+                  SelectedItem="{Binding GeselecteerdeSpelerClub}"
+            materialDesign:HintAssist.Hint="Club"
+            Width="150" Grid.Row="5" Grid.Column="0" Margin="0,20"
+                  AutomationProperties.AutomationId="Club">
+        </ComboBox>
 
         <TextBox 
             Text="{Binding SpelerRecord.Telefoonnummer, ValidatesOnDataErrors=True}"
@@ -117,18 +127,18 @@
             AutomationProperties.AutomationId="Email"/>
 
         <Button Command="{Binding}" CommandParameter="Toevoegen" Content="Toevoegen" 
-                Margin="15" Grid.Row="5" Grid.Column="0" Background="#E73023"
+                Margin="15" Grid.Row="6" Grid.Column="0" Background="#E73023"
                 AutomationProperties.AutomationId="Toevoegen"/>
                 
         <Button Command="{Binding}" CommandParameter="Aanpassen" Background="#E73023"
-                Content="Aanpassen"  Margin="15" Grid.Row="5" Grid.Column="1"
+                Content="Aanpassen"  Margin="15" Grid.Row="6" Grid.Column="1"
                 AutomationProperties.AutomationId="Aanpassen"/>
         
         <Button Command="{Binding}" CommandParameter="Verwijderen"
-                Content="Verwijderen" Margin="15" Grid.Row="5" Grid.Column="3" Background="#E73023"
+                Content="Verwijderen" Margin="15" Grid.Row="6" Grid.Column="3" Background="#E73023"
                 AutomationProperties.AutomationId="Verwijderen"/>
         
-        <Label Content="{Binding Foutmelding}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
+        <Label Content="{Binding Foutmelding}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" Margin="15" Foreground="Red"
                AutomationProperties.AutomationId="Foutmelding"/>
     </Grid>
 </Window>
