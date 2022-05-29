@@ -18,4 +18,4 @@ Insert into dbo.Geslachten(naam)
 Values ('X');
 
 Insert into dbo.Gebruiker(Gebruikersnaam,Wachtwoord)
-Values ('admin','53b6bc441def19973ed8a7876bb3db26f52e56b1f5d6c86d865678e327ec2e26');
+Values ('admin','fc8252c8dc55839967c58b9ad755a59b61b67c13227ddae4bd3f78a38bf394f7');
