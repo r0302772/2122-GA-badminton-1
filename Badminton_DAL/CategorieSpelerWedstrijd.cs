@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Badminton_DAL.BaseModels;
 
 
 namespace Badminton_DAL
 {
     [Table("CategorieSpelerWedstrijd")]
-    public class CategorieSpelerWedstrijd
+    public partial class CategorieSpelerWedstrijd
     {
         [Key]
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace Badminton_DAL
 
         public int WedstrijdId { get; set; }
         public Wedstrijd Wedstrijd { get; set; }
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Badminton_WPF.Views.WedstrijdView"
+﻿<Window x:Class="Badminton_WPF.Views.BezoekerWedstrijdView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -55,15 +55,6 @@
                 <DataGridTextColumn Binding="{Binding Categorie.Naam}" Header="Categorie" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding}" CommandParameter="OpenToevoegenWedstrijd" Content="Toevoegen" 
-                Grid.Row="2" Grid.Column="1" Background="#E73023" Margin="15"
-                AutomationProperties.AutomationId="Toevoegen"/>
-        <Button Command="{Binding}" CommandParameter="OpenAanpassenWedstrijd" Content="Aanpassen" 
-                 Grid.Row="2" Grid.Column="2" Background="#E73023"
-                AutomationProperties.AutomationId="Aanpassen" Margin="15"/>
-        <Button Command="{Binding}" CommandParameter="Verwijderen" Content="Verwijderen" 
-                Grid.Row="2" Grid.Column="3" Background="#E73023"
-                AutomationProperties.AutomationId="Verwijderen" Margin="15"/>
-    </Grid>
+</Grid>
 
 </Window>

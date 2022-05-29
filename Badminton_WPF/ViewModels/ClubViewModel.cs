@@ -59,6 +59,11 @@ namespace Badminton_WPF.ViewModels
 
         public void Zoeken()
         {
+            if (string.IsNullOrWhiteSpace(txtClubnaam))
+            {
+                Clubs = new ObservableCollection<Club>(DatabaseOperations.GetClubs());
+                return;
+            }
             List<Club> clubs = DatabaseOperations.GetClubsByNaam(txtClubnaam);
             Clubs = new ObservableCollection<Club>(clubs);
         }

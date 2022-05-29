@@ -99,6 +99,7 @@
       <DependentUpon>202205261515352_securestring.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Partials\CategorieSpelerWedstrijd.cs" />
     <Compile Include="Partials\Club.cs" />
     <Compile Include="Partials\Geslacht.cs" />
     <Compile Include="Partials\Speler.cs" />

@@ -28,7 +28,7 @@ namespace Badminton_WPF.Views
         {
             if (this.DataContext != null)
             {
-                ((dynamic)this.DataContext).SecurePassword = ((PasswordBox)sender).SecurePassword;
+                ((dynamic)this.DataContext).SecurePassword = ((PasswordBox)sender).Password;
             }
         }
 
