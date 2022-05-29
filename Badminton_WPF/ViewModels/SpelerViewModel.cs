@@ -133,8 +133,10 @@ namespace Badminton_WPF.ViewModels
 
         public void ZoekenViaClub()
         {
+            
             List<Speler> spelers = DatabaseOperations.GetSpelerByClubId(GeselecteerdeClub.Id);
             Spelers = new ObservableCollection<Speler>(spelers);
+            GeselecteerdeClub = null;
         }
 
         public void Zoeken()
@@ -239,6 +241,7 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": return true;
                 case "Toevoegen": return true;
                 case "Aanpassen": return true;
+                case "ZoekenOpClub": return true;
             }
             return true;
         }
@@ -252,6 +255,7 @@ namespace Badminton_WPF.ViewModels
                 case "Verwijderen": Verwijderen(); break;
                 case "Aanpassen": Aanpassen(); break;
                 case "Zoeken": Zoeken(); break;
+                case "ZoekenOpClub": ZoekenViaClub(); break;
             }
 
         }

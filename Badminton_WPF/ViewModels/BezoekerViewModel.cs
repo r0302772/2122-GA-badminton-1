@@ -19,7 +19,7 @@ namespace Badminton_WPF.ViewModels
             switch (parameter.ToString())
             {
                 case "Clubs": return true;
-               
+                case "Wedstrijden": return true;
 
             }
             return true;
@@ -31,10 +31,18 @@ namespace Badminton_WPF.ViewModels
             switch (parameter.ToString())
             {
                 case "Club": OpenClubView(); break;
-                //case "Bezoeker": OpenBezoekerView(); break;
+                case "Wedstrijden": OpenWedstrijdView(); break;
 
 
             }
+        }
+
+        private void OpenWedstrijdView()
+        {
+            Wedstrijdviewmodel vm = new Wedstrijdviewmodel();
+            BezoekerWedstrijdView view = new BezoekerWedstrijdView();
+            view.DataContext = vm;
+            view.Show();
         }
 
         public void OpenClubView()

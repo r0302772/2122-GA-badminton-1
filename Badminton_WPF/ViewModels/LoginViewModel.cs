@@ -22,8 +22,8 @@ namespace Badminton_WPF.ViewModels
         }
 
         
-        private SecureString _SecurePassword;
-        public SecureString SecurePassword
+        private string _SecurePassword;
+        public string SecurePassword
         {
             get { return _SecurePassword; }
             set { _SecurePassword = value;
@@ -65,27 +65,50 @@ namespace Badminton_WPF.ViewModels
             
            
         }
-        public static String sha256_hash(String value)
+
+        private static string GetHash(HashAlgorithm hashAlgorithm, string input)
         {
-            StringBuilder Sb = new StringBuilder();
 
-            using (SHA256 hash = SHA256Managed.Create())
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = hashAlgorithm.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            var sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
             {
-                Encoding enc = Encoding.UTF8;
-                Byte[] result = hash.ComputeHash(enc.GetBytes(value));
-
-                foreach (Byte b in result)
-                    Sb.Append(b.ToString("x2"));
+                sBuilder.Append(data[i].ToString("x2"));
             }
 
-            return Sb.ToString();
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+
+        // Verify a hash against a string.
+        private static bool VerifyHash(HashAlgorithm hashAlgorithm, string input, string hash)
+        {
+            // Hash the input.
+            var hashOfInput = GetHash(hashAlgorithm, input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            return comparer.Compare(hashOfInput, hash) == 0;
         }
         private bool CheckLogin()
         {
-            string hashedPassword = sha256_hash(SecurePassword.ToString());
-            Gebruiker gebruiker = DatabaseOperations.GetGebruikerByName(Gebruikersnaam);
-            if(gebruiker!=null) return hashedPassword.Equals(gebruiker.Wachtwoord);
-            return false;
+            
+            string source = SecurePassword;
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                string hash = GetHash(sha256Hash, source);
+
+                if (hash != DatabaseOperations.GetGebruikerByName(Gebruikersnaam).Wachtwoord) return false;
+                return true;
+            }
         }
 
         public override bool CanExecute(object parameter)
