@@ -18,7 +18,7 @@ Insert into dbo.Geslachten(naam)
 Values ('X');
 
 Insert into dbo.Gebruiker(Gebruikersnaam,Wachtwoord)
-Values ('admin','53b6bc441def19973ed8a7876bb3db26f52e56b1f5d6c86d865678e327ec2e26');
+Values ('admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 
 insert into dbo.Clubs(Clubnaam ,DatumOpgericht,Email,Gemeente,Adres,Telefoonnummer)
 values('Molse BC','1990-01-05','info@molseBC.be','Mol','Weidestraat 1','0478992345');
@@ -41,5 +41,31 @@ VALUES ('Marcel','Reniers','1998-02-03','marcel32@gmail.com','0479909101',1,3);
 INSERT INTO dbo.Spelers(Voornaam,Familienaam,Geboortedatum,Email,Telefoonnummer,GeslachtID,ClubID)
 VALUES ('Joske','Reniers','1997-06-09','joske32@gmail.com','0499849192',1,4);
 INSERT INTO dbo.Spelers(Voornaam,Familienaam,Geboortedatum,Email,Telefoonnummer,GeslachtID,ClubID)
-VALUES ('Tom','Reniers','1990-08-04','tom32@gmail.com','0486929110',3,5);
+VALUES ('Tom','Reniers','1990-08-04','tom32@gmail.com','0486929110',3,5);2
 
+
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 1', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',1,2)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 2', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',2,2)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 3', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',3,2)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 4', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',4,2)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 5', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',5,2)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Loreas 6', 'Clonen','straat 123', 'Geel', '0487542451', 'loreas@fake.com',6,2)
+
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 1', 'Clonen','straat 113', 'Geel', '0487541451', 'Tom@fake.com',1,1)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 2', 'Clonen','straat 123', 'Geel', '0487542451', 'Tom@fake.com',2,1)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 3', 'Clonen','straat 123', 'Geel', '0487542451', 'Tom@fake.com',3,1)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 4', 'Clonen','straat 123', 'Geel', '0487542451', 'Tom@fake.com',4,1)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 5', 'Clonen','straat 123', 'Geel', '0487542451', 'Tom@fake.com',5,1)
+INSERT INTO dbo.Personeel(Voornaam,Familienaam, Adres, Gemeente, Telefoonnummer, Email, ClubId, FunctieId)
+values('Tom 6', 'Clonen','straat 123', 'Geel', '0487542451', 'Tom@fake.com',6,1)
