@@ -204,17 +204,7 @@ namespace Badminton_WPF.ViewModels
 
         private void Aanpassen()
         {
-            if (CategorieSpelerWedstrijd.IsGeldig())
-            {
-                if (CategorieSpelerWedstrijd.Categorie != null)
-                {
-                    if (CategorieSpelerWedstrijd.Categorie.Naam.ToLower() == "enkel")
-                    {
-                        CategorieSpelerWedstrijd.SpelerAway2 = null;
-                        CategorieSpelerWedstrijd.SpelerHome2 = null;
-                    }
-
-                }
+            
                 int ok = DatabaseOperations.CategorieSpelerWedstrijdAanpassen(CategorieSpelerWedstrijd);
                 if (ok > 0)
                 {
@@ -227,7 +217,7 @@ namespace Badminton_WPF.ViewModels
                 {
                     Foutmelding = "Wedstrijd is niet aangepast!";
                 }
-            }
+
         }
 
         private void Verwijderen()
